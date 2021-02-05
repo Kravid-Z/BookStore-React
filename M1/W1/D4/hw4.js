@@ -1,18 +1,61 @@
+/* MY NOTES AFTER THE "one1on1s" ==> about_this_homework: 
+
+I should try to understand the scope of the block which i'm using
+
+if(){Which is the scope of this?}
+
+func(){which  is the scope this?}
+__________________________________________
++++ "THIS." key word +++
+also if i use key word "this." ---> I should be aware of the scope and something like inheritance of the parent.
+EX ----->
+const person = {    <---* Object is the parent
+    name:"Tetiana",
+    surname:"Yaremko",
+   "fullName" is like child func of the object *---> fullName: function () {
+       return this.name+ ' ' +this.surname
+    }
+}
+
+const result =person.fullName()
+console.log(result)
+__________________________________________
+
+THIS IS AN ARROW FUNCTION -----> const whatever = (Parameter or parameters of my func) => {body of my func}
+
+$-> May I use an arrow func inside an object?
+Answ/-> **Sorry No I can't, because it's related to the scope, ex if i use "this." key word,
+ .js can't identify to whom it owns **
+
+$-> Why is better to create a func as this (const nameofmyfunc = (paremeter){body})?
+Answ/-> **Cause it save me from overriding a function in my code**
+
+$-> May I use an arrow func without curly brackets{}? 
+Answ/-> **Yeah it's possible, IF I have just a one line func. 
+Also isn't neccesary to put key word return if I want to return something,
+cause it is like a property of the arrow func "=>"**
+
+EX -----> const checkN2 = (n) => typeof n === `number` ? true:false // Pro Version to do func ==> its just for one line code.
+__________________________________________
+*/
+
 /*
 ASSIGNMENT RULES
 - All the answers must be in JavaScript
 - The solution must be pushed to the repository and be available for the tutors by the end of the day
-- You can ask for tutor's help
 - You can google / use StackOverflow BUT we suggest you to use just the material provided
 */
 
 /* EXERCISE 1
 Write a function "area" which receives 2 parameters (l1,l2) and calculates the area of the associated rectangle.
 */
+
 function area (b1,a2) {
     const totalArea = b1*a2
     return console.log(`This is the total area of your rectangle: ${totalArea}`)
 }
+
+- You can ask for tutor's help
 
 //  ******* =====> Testing Function area()
 // area (2,3)      
@@ -57,17 +100,27 @@ Write a function "boundary" which accept an integer n and returns true if n is w
 */
 /* WRITE YOUR CODE HERE */
 
+//FUNC with if ( thiscondition && thiscondition || or this condition){return true} return false.
+
 function boundary (n) {
-    if (n < 20) {
-        return console.log(false)
-    } else if(n <= 100){
-        return console.log(true)
-    } else if(n === 400){
-        return console.log(true)
-    } else {
-        return console.log(false)
+  if((n <= 100 && n>=20) || n===400){
+        return true
     }
+    return false
 }
+//
+function boundary2(n) {
+    return (n<=100 && n>=20) || n===400 ? true : false
+}
+ 
+const boundary3 =(n)=>  (n<=100 && n>=20) || n===400 ? true : false 
+
+function checkN (N) {
+    if (typeof N === 'number') return true
+    else return false
+    
+}
+const checkN2 = (N) => typeof N === `number` ? true:false // Pro Version to do func ==> its just for one line code.
 
 //  ******* =====> Testing Function boundary()
 // boundary(2)
@@ -81,15 +134,67 @@ function boundary (n) {
 Write a function "strivify" which accepts a string.
 It should add the word "Strive" in front of the given string, but if the given string already begins with "Strive", then it should just return the original string.
 */
-
 /* WRITE YOUR CODE HERE */
+function strivify (string) {
+    let strivify = "Strive"
+    if (string === strivify) {
+        console.log(string)
+    } else {
+        console.log(`${strivify} ${string}`)
+    }
+}
+// strivify("Says Hi... David")
+// strivify("Strive")
 
 /* EXERCISE 6
 Write a function "check3and7" which accepts a positive number and check if it is a multiple of 3 or a multiple of 7.
 HINT: Module Operator
 */
-
 /* WRITE YOUR CODE HERE */
+
+function check3and7(n) {
+//     const number = n
+//   let isNpositive = number < 0 ?true:false
+//   console.log(number)
+  let isNmultipleOf3 = n%3 
+  let isNmultipleOf7 = n%7 
+
+if (n < 0) {
+    if (isNmultipleOf3===0) {
+        console.log(`Your ${n} is multiple of 3`)
+    }if (isNmultipleOf7===0) {
+        console.log(`Your ${n} is multiple of 7`)
+    }else {
+        console.log(`Sorry still we are working to create a function pretty cute, 
+        by this time with this function you just will know multiple of 3 or 7`)
+    }
+} else {
+    console.log (`Sorry our function just goes with positive number, 
+    return again next month... we should found a solution by that time ^^_ `)
+}
+
+}
+
+check3and7(6)
+const person = {
+    name:"Tetiana",
+    surname:"Yaremko",
+    fullName: function () {
+       return this.name+ ' ' +this.surname
+    }
+}
+
+const result =person.fullName()
+console.log(result)
+
+
+
+// check3and7(9)
+// check3and7(14)
+// check3and7(21)
+// check3and7(16)
+// console.log(6%3)
+// console.log(9%3)
 
 /* EXERCISE 7
 Write a function "reverseString" to programmatically reverse a given string (es.: Strive => evirtS).
