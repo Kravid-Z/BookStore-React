@@ -133,9 +133,16 @@ if (boolean === true) {
    Ex.: onlyLetters("I love 123 whatever")  => returns "I love whatever"
 */
 const onlyLetters = (string) => {
-    
+    let splitTheString = []
+    splitTheString = string.split("")
+    for (let index = 0; index < splitTheString.length; index++) {
+        // typeof splitTheString[index]
+        let lookingFn = splitTheString[parseInt(index)]
+        console.log ( typeof splitTheString[index])
+    }
+// console.log(splitTheString)    
 }
-
+onlyLetters( "Hello 123 JS dev")
 /* Ex.6 
    Write the function isThisAnEmail that receives a string and returns true if the string is a valid email.
 */
