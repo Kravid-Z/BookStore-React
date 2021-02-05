@@ -1,10 +1,16 @@
 /* MY NOTES AFTER THE "one1on1s" ==> about_this_homework: 
 
-I should try to understand the scope of the block which i'm using
+*? I should try to understand the scope of the block which i'm using
 
 if(){Which is the scope of this?}
 
 func(){which  is the scope this?}
+
+*? Also I should ask myself, may i write my code in a shortest and smartest way.
+
+-> Please, Don't console.log inside the func if is't the purpose of it.
+it's quite better store my func in a variable and later console.log the func,
+or func with a (parameter)
 __________________________________________
 +++ "THIS." key word +++
 also if i use key word "this." ---> I should be aware of the scope and something like inheritance of the parent.
@@ -16,8 +22,9 @@ const person = {    <---* Object is the parent
        return this.name+ ' ' +this.surname
     }
 }
-
+---> if I want to use a result from a func I should store it in a variable, like this: 
 const result =person.fullName()
+and then console.log the variable for ex.
 console.log(result)
 __________________________________________
 
@@ -55,7 +62,7 @@ function area (b1,a2) {
     return console.log(`This is the total area of your rectangle: ${totalArea}`)
 }
 
-- You can ask for tutor's help
+// - You can ask for tutor's help
 
 //  ******* =====> Testing Function area()
 // area (2,3)      
@@ -102,24 +109,28 @@ Write a function "boundary" which accept an integer n and returns true if n is w
 
 //FUNC with if ( thiscondition && thiscondition || or this condition){return true} return false.
 
+// The long Way -->
 function boundary (n) {
   if((n <= 100 && n>=20) || n===400){
         return true
     }
     return false
 }
-//
+// The other long Way using ? Ternary Operator-->
 function boundary2(n) {
     return (n<=100 && n>=20) || n===400 ? true : false
 }
- 
+// The short Way --> 
 const boundary3 =(n)=>  (n<=100 && n>=20) || n===400 ? true : false 
 
+//Task from Tetiana.  Make a func thats accept an integer and check if is a number and if it is return true if not return false
+// The long Way -->
 function checkN (N) {
     if (typeof N === 'number') return true
     else return false
     
 }
+// The short Way -->
 const checkN2 = (N) => typeof N === `number` ? true:false // Pro Version to do func ==> its just for one line code.
 
 //  ******* =====> Testing Function boundary()
@@ -153,9 +164,6 @@ HINT: Module Operator
 /* WRITE YOUR CODE HERE */
 
 function check3and7(n) {
-//     const number = n
-//   let isNpositive = number < 0 ?true:false
-//   console.log(number)
   let isNmultipleOf3 = n%3 
   let isNmultipleOf7 = n%7 
 
@@ -174,20 +182,6 @@ if (n < 0) {
 }
 
 }
-
-check3and7(6)
-const person = {
-    name:"Tetiana",
-    surname:"Yaremko",
-    fullName: function () {
-       return this.name+ ' ' +this.surname
-    }
-}
-
-const result =person.fullName()
-console.log(result)
-
-
 
 // check3and7(9)
 // check3and7(14)
