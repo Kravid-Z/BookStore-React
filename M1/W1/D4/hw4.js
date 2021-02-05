@@ -9,21 +9,73 @@ ASSIGNMENT RULES
 /* EXERCISE 1
 Write a function "area" which receives 2 parameters (l1,l2) and calculates the area of the associated rectangle.
 */
+function area (b1,a2) {
+    const totalArea = b1*a2
+    return console.log(`This is the total area of your rectangle: ${totalArea}`)
+}
+
+//  ******* =====> Testing Function area()
+// area (2,3)      
 
 /* EXERCISE 2
 Write a function "crazySum" which receives two integers. It should return the sum of those two values, but if the two values are the same then it should return their sum multiplied by 3.
 */
+
+function crazySum(n1,n2) {
+let totalSum = n1 + n2 
+        if (n1 === n2) {
+        totalSum = totalSum * 3
+    } 
+    return console.log (totalSum)
+}
+//  ******* =====> Testing Function crazySum()
+// crazySum (2,3)
+// crazySum (2,2)
+
 
 /* EXERCISE 3
 Write a function "crazyDiff" that computes the absolute difference between a given number and 19. 
 It should return triple their absolute difference if the given number is greater than 19.
 */
 
+function crazyDiff(n) {
+    let absoluteDiff = n - 19
+    
+    if (absoluteDiff < 0) {
+        absoluteDiff = -absoluteDiff
+    } else if (n > 19){
+        absoluteDiff = absoluteDiff *  3
+    }
+    return console.log(absoluteDiff)
+}
+//  ******* =====> Testing Function crazyDiff()
+// crazyDiff(10)
+// crazyDiff(20)
+
 /* EXERCISE 4
 Write a function "boundary" which accept an integer n and returns true if n is within 20 and 100 (included) or if it's equal to 400.
 */
-
 /* WRITE YOUR CODE HERE */
+
+function boundary (n) {
+    if (n < 20) {
+        return console.log(false)
+    } else if(n <= 100){
+        return console.log(true)
+    } else if(n === 400){
+        return console.log(true)
+    } else {
+        return console.log(false)
+    }
+}
+
+//  ******* =====> Testing Function boundary()
+// boundary(2)
+// boundary(20)
+// boundary(100)
+// boundary(400)
+// boundary(401)
+
 
 /* EXERCISE 5
 Write a function "strivify" which accepts a string.
