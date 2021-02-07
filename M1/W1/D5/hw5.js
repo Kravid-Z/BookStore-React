@@ -131,22 +131,59 @@ if (boolean === true) {
 /* Ex.5
    Write the function onlyLetters that receives a string, removes all the numbers and returns it.
    Ex.: onlyLetters("I love 123 whatever")  => returns "I love whatever"
-*/
-const onlyLetters = (string) => {
-    let splitTheString = []
-    splitTheString = string.split("")
-    for (let index = 0; index < splitTheString.length; index++) {
-        // typeof splitTheString[index]
-        let lookingFn = splitTheString[parseInt(index)]
-        console.log ( typeof splitTheString[index])
-    }
-// console.log(splitTheString)    
-}
-onlyLetters( "Hello 123 JS dev")
+// */
+const onlyLetters = (string) => { return string.replace(/\d/g,"")}
+// console.log(onlyLetters( "Hello 123 JS dev"))
+
 /* Ex.6 
    Write the function isThisAnEmail that receives a string and returns true if the string is a valid email.
 */
 
+/* Which is the right syntax of an email?:
+Surffing find this in (https://en.wikipedia.org/wiki/Email_address):
+1. Format
+2. Rules and valid characters
+___________
+1. Right format is:
+local-part@domain
+2. Rules:
+* Long
+---> "local-part" / may be up to 64 octets (or characters) long
+---> "domain" / may have a maximum of 255 octets (or characters) 
+* Syntax
+--->  - a. "domain" = may have just one dot "." 
+      - b. "domain" = can't have "_" underscore
+
+--->  - a. "local-part"
+*/
+//This func was created taking in account just if the email has more than one "@" & "." sign Domain.
+const isThisAnEmail = (email) => {
+
+  const checkingDotSignDomain = email.match(/\./g)
+  const itHasMoreThan1DotSignDomain = checkingDotSignDomain.includes(".",1) //This const store boolean => true if the email has more than one "." and false if not.
+  const checkingAtSign = email.match(/@/g) 
+  const itHasMoreThan1AtSign = checkingAtSign.includes("@",1) //This const store boolean => true if the email has more than one "@" and false if not.
+  if (itHasMoreThan1DotSignDomain === false && itHasMoreThan1AtSign === false) {
+  const isValidEmail = "This is a valid email"
+  return isValidEmail
+} else {
+  const isInvalidEmail = "Please check again your email adress"
+  return isInvalidEmail
+}
+
+//   const checkValidUserName = email.slice(0,email.search(/@/)) // ---> slice this string to check if the user has a valid name(task without finish)
+//  return checkValidUserName
+  
+}
+
+console.log(isThisAnEmail("Grather@hotmask.com"))
+
+// function mycheckat() {
+//   var str = "The rain in SPAIN stays mainly in the plain"; 
+//   var res = str.match(/ain/g);
+//   return res
+// }
+// console.log(mycheckat())
 /* Ex.7
    Write the function whatDayIsIt that should return the current day of the week.
 */
