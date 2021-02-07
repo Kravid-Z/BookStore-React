@@ -176,14 +176,11 @@ const isThisAnEmail = (email) => {
   
 }
 
-console.log(isThisAnEmail("Grather@hotmask.com"))
+// console.log(isThisAnEmail("Grather@hotmask.com")) // => Valid
+// console.log(isThisAnEmail("Grath@er@hotmask.com")) // => Invalid
+// console.log(isThisAnEmail("Grather@hotm.ask.com")) // => Invalid
 
-// function mycheckat() {
-//   var str = "The rain in SPAIN stays mainly in the plain"; 
-//   var res = str.match(/ain/g);
-//   return res
-// }
-// console.log(mycheckat())
+
 /* Ex.7
    Write the function whatDayIsIt that should return the current day of the week.
 */
