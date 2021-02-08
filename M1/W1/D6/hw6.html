@@ -36,6 +36,17 @@ EX12: Write a function to color the price of every product in a different one ev
     <title>Document</title>
 </head>
 <body>
+    
+<!-- Next task Add my funcs to the buttons -->
+    <div class="myFirstCMS">
+        <button id="changingH1">Change H1</button>
+        <button id="changePageBackground-color">Change Page Background-color</button>
+        <button id="changeFooterAdress">Change Adress</button>
+        <button id="addingCssToLinks">Adding CSS to Amazon Links</button>
+        <button id="togglingImages">Toggling Images visibility</button>
+        <button id="coloringPrices">Coloring Prices</button>
+    </div>
+
     <h1 class="nameStore">Iclone Store</h1>
     <table class="five'sGrid">
         <tr class="title'sEachGroupOfProducts">
@@ -67,18 +78,18 @@ EX12: Write a function to color the price of every product in a different one ev
             <td class="priceGroupFive"><strong class="priceTagFive"></strong></td>
         </tr>
         <tr class="linksToAmazon">
-            <td class="linkTaOne"><a href="#" target="_blank" rel="noopener noreferrer"></a></td>
-            <td class="linkTaTwo"><a href="#" target="_blank" rel="noopener noreferrer"></a></td>
-            <td class="linkTaThree"><a href="#" target="_blank" rel="noopener noreferrer"></a></td>
-            <td class="linkTaFour"><a href="#" target="_blank" rel="noopener noreferrer"></a></td>
-            <td class="linkTaFive"><a href="#" target="_blank" rel="noopener noreferrer"></a></td>
+            <td class="celdLinkTa"><a class="linkTa" class="linkTaOne"href="#" target="_blank" rel="noopener noreferrer">Comprar en Amazon</a></td>
+            <td class="celdLinkTa"><a class="linkTa" class="linkTaTwo"href="#" target="_blank" rel="noopener noreferrer">Comprar en Amazon</a></td>
+            <td class="celdLinkTa"><a class="linkTa" class="linkTaThree"href="#" target="_blank" rel="noopener noreferrer">Comprar en Amazon</a></td>
+            <td class="celdLinkTa"><a class="linkTa" class="linkTaFour"href="#" target="_blank" rel="noopener noreferrer">Comprar en Amazon</a></td>
+            <td class="celdLinkTa"><a class="linkTa" class="linkTaFive" href="#" target="_blank" rel="noopener noreferrer">Comprar en Amazon</a></td>
         </tr>
     </table>
     <div class="footer">
         <div class="infoShop">
             <h3 class="nameShop">Iclone</h3>
             <img class="logoShop" src="" alt="">
-            <h4 class="adressShop"></h4>
+            <h4 class="adressShop"> Av de las Palmas de la Villa en Estambul</h4>
         </div>
         <div class="contactUs">
         <h2 class="titleContactUs">Contact Us</h2>
@@ -86,5 +97,39 @@ EX12: Write a function to color the price of every product in a different one ev
         <textarea name="userMssg" id="usersDoubtsEcomerce" cols="30" rows="10"></textarea>
     </div>        
     </div>
+    <script>
+     /* EX7 */   const changingH1 = () => {
+         let selectFirstHeading = document.querySelector(`h1`)
+         selectFirstHeading.innerText = `Iphonus` 
+        //  console.log(selectFirstHeading)
+     }
+
+     /* EX8 */   const changePageBackground = () => {
+        let selectbody = document.querySelector(`body`)
+         selectbody.style.backgroundColor = `#342E37` //This is Black Coffee
+         selectbody.style.color = `#FAFFFD` //This is BabyPowder
+        //  console.log(selectbody)
+     }
+        
+     /* EX9 */   const changeFooterAdress = () => {
+        let selectFooterAdress = document.querySelector(`.footer h4`)
+        selectFooterAdress.innerText = `Av Dr. Federico Rubio Y Gali 67`
+        //  console.log(selectFooterAdress)
+     }
+        
+     /* EX10 */   const addingCssToLinks = () => {
+
+         let selectLinksAmazon = document.querySelectorAll(`a`)
+         //  console.log(selectLinksAmazon)
+        for (let i = 0; i < selectLinksAmazon.length; i++) {
+            selectLinksAmazon[i].style.color = `#FA824C` //This is Mandarin            
+        }
+     }
+        
+     /* EX11 */   const togglingImages = () => {}
+        
+     /* EX12 */   const coloringPrices = () => {}
+
+    </script>
 </body>
 </html>
