@@ -1,0 +1,27 @@
+img.logoShop {
+    display: inline;
+}
+
+h1.nameStore {
+    display: inline;
+    font-size: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 25%;
+}
+
+table.fivesGrid{
+    text-align: center;
+}
+
+.imgEachGroup img {
+    height:  250px;
+    width: 250px; 
+    transform: scale(0.7);
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    text-align: inherit;
+}
+

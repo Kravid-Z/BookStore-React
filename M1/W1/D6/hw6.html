@@ -33,22 +33,24 @@ EX12: Write a function to color the price of every product in a different one ev
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/M1/W1/D6/basicStyle.css">
     <title>Document</title>
 </head>
 <body>
-    
+
 <!-- Next task Add my funcs to the buttons -->
     <div class="myFirstCMS">
         <button id="changingH1">Change H1</button>
         <button id="changePageBackground-color">Change Page Background-color</button>
         <button id="changeFooterAdress">Change Adress</button>
         <button id="addingCssToLinks">Adding CSS to Amazon Links</button>
-        <button id="togglingImages">Toggling Images visibility</button>
+        <button id="togglingImages">Adding & Toggling Images visibility</button>
         <button id="coloringPrices">Coloring Prices</button>
     </div>
 
+    <img class="logoShop" src="/M1/W1//D6//resources/IcloneLogo.jpeg" alt="IcloneLogo">
     <h1 class="nameStore">Iclone Store</h1>
-    <table class="five'sGrid">
+    <table class="fivesGrid">
         <tr class="title'sEachGroupOfProducts">
             <th class="titleGroupOne"><h2 class="h2GroupOne">Latest mobiles</h2></th>
             <th class="titleGroupTwo"><h2 class="h2GroupTwo">Most popular accesories</h2></th>
@@ -57,11 +59,11 @@ EX12: Write a function to color the price of every product in a different one ev
             <th class="titleGroupFive"><h2 class="h2GroupFive">Refurbished</h2></th>
         </tr>
         <tr class="imgEachGroup">
-            <td class="imgGroupOne"><img src="" alt=""></td>
-            <td class="imgGroupTwo"><img src="" alt=""></td>
-            <td class="imgGroupThree"><img src="" alt=""></td>
-            <td class="imgGroupFour"><img src="" alt=""></td>
-            <td class="imgGroupFive"><img src="" alt=""></td>
+            <td class="imgGroupOne"><img src="/M1/W1//D6//resources/imglatestmobiles.jpg" alt=""></td>
+            <td class="imgGroupTwo"><img src="/M1/W1//D6//resources/AccesorriesMobile.png" alt=""></td>
+            <td class="imgGroupThree"><img src="/M1/W1//D6//resources/Best_Seller.png" alt=""></td>
+            <td class="imgGroupFour"><img src="/M1/W1//D6//resources/JustforGeeks.jpg" alt=""></td>
+            <td class="imgGroupFive"><img src="/M1/W1//D6//resources/refurbishedPhones.jpg" alt=""></td>
         </tr>
         <tr class="descriptionEachGroup">
             <td class="descriptionGroupOne"><p class="pOfDescriptionOne"></p></td>
@@ -71,7 +73,7 @@ EX12: Write a function to color the price of every product in a different one ev
             <td class="descriptionGroupFive"><p class="pOfDescriptionFive"></p></td>
         </tr>
         <tr class="priceEachGroup">
-            <td class="priceGroupOne"><strong class="priceTagOne"></strong></td>
+            <td class="priceGroupOne"><strong class="priceTagOne">1400 €</strong></td>
             <td class="priceGroupTwo"><strong class="priceTagTwo"></strong></td>
             <td class="priceGroupThree"><strong class="priceTagThree"></strong></td>
             <td class="priceGroupFour"><strong class="priceTagFour"></strong></td>
@@ -88,7 +90,7 @@ EX12: Write a function to color the price of every product in a different one ev
     <div class="footer">
         <div class="infoShop">
             <h3 class="nameShop">Iclone</h3>
-            <img class="logoShop" src="" alt="">
+            <img class="logoShopFooter" src="/M1/W1//D6//resources/IcloneLogo.jpeg" alt="IcloneLogo">
             <h4 class="adressShop"> Av de las Palmas de la Villa en Estambul</h4>
         </div>
         <div class="contactUs">
@@ -97,39 +99,7 @@ EX12: Write a function to color the price of every product in a different one ev
         <textarea name="userMssg" id="usersDoubtsEcomerce" cols="30" rows="10"></textarea>
     </div>        
     </div>
-    <script>
-     /* EX7 */   const changingH1 = () => {
-         let selectFirstHeading = document.querySelector(`h1`)
-         selectFirstHeading.innerText = `Iphonus` 
-        //  console.log(selectFirstHeading)
-     }
-
-     /* EX8 */   const changePageBackground = () => {
-        let selectbody = document.querySelector(`body`)
-         selectbody.style.backgroundColor = `#342E37` //This is Black Coffee
-         selectbody.style.color = `#FAFFFD` //This is BabyPowder
-        //  console.log(selectbody)
-     }
-        
-     /* EX9 */   const changeFooterAdress = () => {
-        let selectFooterAdress = document.querySelector(`.footer h4`)
-        selectFooterAdress.innerText = `Av Dr. Federico Rubio Y Gali 67`
-        //  console.log(selectFooterAdress)
-     }
-        
-     /* EX10 */   const addingCssToLinks = () => {
-
-         let selectLinksAmazon = document.querySelectorAll(`a`)
-         //  console.log(selectLinksAmazon)
-        for (let i = 0; i < selectLinksAmazon.length; i++) {
-            selectLinksAmazon[i].style.color = `#FA824C` //This is Mandarin            
-        }
-     }
-        
-     /* EX11 */   const togglingImages = () => {}
-        
-     /* EX12 */   const coloringPrices = () => {}
-
-    </script>
+    <script type="text/javascript" src="/M1/W1/D6/index.js">
+      </script>
 </body>
 </html>

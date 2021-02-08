@@ -185,6 +185,10 @@ const isThisAnEmail = (email) => {
    Write the function whatDayIsIt that should return the current day of the week.
 */
 
+// *---> My function should use as base the actual date to make the operation, and later use as parameter the date that we want to check.
+Date()
+// console.log(Date())
+
 /* Ex.8
     Write the function rollTheDices that receives a numeric input.
     It should use the Dice function defined in Ex1 and return an object that contains both the sum of all values extracted and the single values of the dicerolls themselves.
