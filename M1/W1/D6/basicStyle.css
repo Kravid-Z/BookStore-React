@@ -25,3 +25,24 @@ a {
     text-align: inherit;
 }
 
+img.logoShopFooter {
+    display: inline;
+    height:  150px;
+    width: 150px; 
+    transform: scale(0.7);
+}
+
+div.infoShop h3.nameShop {
+    display: inline;
+    font-size: 25px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+
+div.infoShop h4.adressShop {
+    display: inline;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
