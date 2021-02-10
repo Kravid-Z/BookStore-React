@@ -77,7 +77,11 @@
     */
 
     function paintItGreen(){
-        
+        let selectingLists = document.querySelectorAll("ul")
+        // selectingLists.forEach(ul=> ul.style.backgroundColor = "green" ) //This is the short-hand code
+        for (let i = 0; i < selectingLists.length; i++) {
+            selectingLists[i].style.backgroundColor = "green";  
+        }   
     }
 
     /* EXERCISE 9
