@@ -8,9 +8,11 @@
     const addNewTask = () => {
     let taskList = document.getElementById(`myTaskList`)
     let targettingInputText = document.getElementById(`newTask`)
+    let newTask = targettingInputText.value
     let newItemList = document.createElement(`li`)
     taskList.appendChild(newItemList)
-    // newItemList.innerText = targettingInputText.innerText  --> Can't assign the inner the new itemList?
+    newItemList.innerText = newTask
+    targettingInputText.value = ""
     }
       /* EXERCISE 6: 
           Create a method "removeLast" which removes the last item from the task list
@@ -40,7 +42,10 @@
           Create a method "changeTaskBackgroundColor" which takes the color from the color picker with an 
           onchange event listener ad applies it as background to every list item
       */
+    const changeTaskBackgroundColor = (event) => {
+        const selectedColor = event.target.value
 
+    }
       /* EXTRA */
 
       /* EXERCISE 10: 
