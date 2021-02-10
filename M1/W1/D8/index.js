@@ -11,6 +11,7 @@
     let newTask = targettingInputText.value
     let newItemList = document.createElement(`li`)
     taskList.appendChild(newItemList)
+    newItemList.style.listStyle = "none"
     newItemList.innerText = newTask
     targettingInputText.value = ""
     }
@@ -34,7 +35,7 @@
           Create a method "getTasksAsArray" which returns (and print to the console) an array containing the tasks as string
       */
     const getTasksAsArray = () => {
-        let  taskList = document.getElementsByTagName("li") //--> Using elements by TagName to receive an [HTML Collection]
+        let  taskList = document.getElementsByTagName(`li`) //--> Using elements by TagName to receive an [HTML Collection]
         let arrayOfTaskList = [...taskList] //--> Using ... Spread Syntax https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
         console.log(arrayOfTaskList)
     }
@@ -42,9 +43,23 @@
           Create a method "changeTaskBackgroundColor" which takes the color from the color picker with an 
           onchange event listener ad applies it as background to every list item
       */
-    const changeTaskBackgroundColor = (event) => {
+    const changeTaskBackgroundColor = (event) => {  //--> i write directly in HTML the event, still isn't clear how to do it from DOM manipulation, I'll check again the recording
         const selectedColor = event.target.value
-
+        let selectingColorPicker = document.getElementById(`colorPicker`)
+        let newColor = selectingColorPicker.value
+        let taskList = document.getElementsByTagName(`li`)
+        for (const li of taskList) {
+        //    li.style.backgroundColor = newColor
+            switch (newColor) { //Trying to use a switch to solve matter of font-visibility with darker background-colors
+                case "0 0 0":
+                    li.style.color = "255 255 255"
+                    break;
+            
+                default:
+                    li.style.backgroundColor = newColor
+                    break;
+            }
+        }
     }
       /* EXTRA */
 
