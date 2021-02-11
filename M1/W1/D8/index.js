@@ -15,6 +15,7 @@
     newItemList.innerText = newTask
     targettingInputText.value = ""
     }
+    let 
       /* EXERCISE 6: 
           Create a method "removeLast" which removes the last item from the task list
       */
