@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <!--
+        QUIZ GAME!
+
+        RULES:
+        / The player must guess correctly a certain amount of questions =
+        / Each correct answer gives him one point
+        / Answers could be “multiple” or “true/false”
+        / At the end of the game, the user must know his total score
+
+        QUESTIONS:
+        / You can get them from this URL ( http://bit.ly/strive_QUIZZ ) or you can write your own
+        / Could be multiple of boolean (true / false)
+        / [EXTRA] Show if the answer was wrong or correct after clicking
+        / [EXTRA] Present them “one a time”
+
+        HINTS:
+        / Keep a global variable “score” for the score
+        / Keep a variable “questionNumber” for the “question” the user is answering
+        / When “questionNumber” is bigger then the available questions, present the score
+        / Start working with the question saved in a variable, and then include AJAX etc
+        / Start with the easier version and THEN implement the “EXTRAs”
+        / Please debug everything / try it on the console to be sure of what to expect from your code
+
+        EXTRA:
+        / Show if the answer was wrong or correct after clicking
+        / Present questions one a time
+        / Let the user select difficulty and number of questions (you can get q/a from https://opentdb.com/api.php?amount=10&category=18&difficulty=easy modifying amount and difficulty)
+
+    -->
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quizzes!</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <h1>Quizzes!</h1>
+    <div id="firstLayer">
+      <!--First Layer-->
+      <input id="fireButton" type="button" value="Test your skills" />
+      <!--Get Users Data Layer-->
+      <div id="usersData">
+        <!-- #usersData setted by default as display none, before starts quizz
+        First Step after users press firebutton, change display propertie to register userName -->
+        <label for="userName">Your Name:</label>
+        <input id="userName" type="text" placeholder="Player name" />
+        <input id="createNewUser" type="button" value="Create User" />
+        <!--Implemment difficulty-level button, Extras-->
+      </div>
+      <!--Play Ground Layer-->
+      <div id="playGround">
+        <!-- #playGround setted by default as display none, before starts quizz-->
+
+        <h2 id="questionTitle">
+          <!-- #questionTitle setted by default as display none, before starts quizz-->
+        </h2>
+        <div id="dashboardQuestion">
+          <!-- #dashboardQuestion setted by default as display none, before starts quizz-->
+          <!-- Here will be our dashboard Question-->
+        </div>
+        <input id="buttonNext" type="button" value="Next Question ->" />
+        <div id="answersCheckerMessage"></div>
+      </div>
+      <!--Rules in First Layer, implement a button to display rules again during game-->
+      <div id="rules">
+        <h2>Game Rules</h2>
+        <ol>
+          <li><strong>Quizzes!</strong> will give you 5 random question</li>
+          <li>You'll have one minute per question</li>
+          <li>Each question will give you one Brain$Coin, if it's correct!</li>
+          <li>Questions could be multiple choice or true && false</li>
+          <li>
+            At last, <strong>Quizzes!</strong> will give your total Brain$Coin
+          </li>
+        </ol>
+      </div>
+    </div>
+    <script src="index.js">
+      const questions = [
+        {
+          category: "Science: Computers",
+          type: "multiple",
+          difficulty: "easy",
+          question: "What does CPU stand for?",
+          correct_answer: "Central Processing Unit",
+          incorrect_answers: [
+            "Central Process Unit",
+            "Computer Personal Unit",
+            "Central Processor Unit",
+          ],
+        },
+        {
+          category: "Science: Computers",
+          type: "multiple",
+          difficulty: "easy",
+          question:
+            "In the programming language Java, wh    ich of these keywords    would you put on a variable to make sure it doesn&#039;t get modified?",
+          correct_answer: "Final",
+          incorrect_answers: ["Static", "Private", "Public"],
+        },
+        {
+          category: "Science: Computers",
+          type: "boolean",
+          difficulty: "easy",
+          question: "The logo for Snapchat is a Bell.",
+          correct_answer: "False",
+          incorrect_answers: ["True"],
+        },
+        {
+          category: "Science: Computers",
+          type: "boolean",
+          difficulty: "easy",
+          question:
+            "Pointers were not used in the original C programming language; they were added later on in C++.",
+          correct_answer: "False",
+          incorrect_answers: ["True"],
+        },
+        {
+          category: "Science: Computers",
+          type: "multiple",
+          difficulty: "easy",
+          question:
+            "What is the most preferred image format used for logos in the Wikimedia database?",
+          correct_answer: ".svg",
+          incorrect_answers: [".png", ".jpeg", ".gif"],
+        },
+        {
+          category: "Science: Computers",
+          type: "multiple",
+          difficulty: "easy",
+          question: "In web design, what does CSS stand for?",
+          correct_answer: "Cascading Style Sheet",
+          incorrect_answers: [
+            "Counter Strike: Source",
+            "Corrective Style Sheet",
+            "Computer Style Sheet",
+          ],
+        },
+        {
+          category: "Science: Computers",
+          type: "multiple",
+          difficulty: "easy",
+          question:
+            "What is the code name for the mobile operating system Android 7.0?",
+          correct_answer: "Nougat",
+          incorrect_answers: [
+            "Ice Cream Sandwich",
+            "Jelly Bean",
+            "Marshmallow",
+          ],
+        },
+        {
+          category: "Science: Computers",
+          type: "multiple",
+          difficulty: "easy",
+          question: "On Twitter, what is the character limit for a Tweet?",
+          correct_answer: "140",
+          incorrect_answers: ["120", "160", "100"],
+        },
+        {
+          category: "Science: Computers",
+          type: "boolean",
+          difficulty: "easy",
+          question: "Linux was first created as an alternative to Windows XP.",
+          correct_answer: "False",
+          incorrect_answers: ["True"],
+        },
+        {
+          category: "Science: Computers",
+          type: "multiple",
+          difficulty: "easy",
+          question:
+            "Which programming language shares its name with an island in Indonesia?",
+          correct_answer: "Java",
+          incorrect_answers: ["Python", "C", "Jakarta"],
+        },
+      ];
+
+      // window.onload = function () {
+        //IF YOU ARE DISPLAYING ALL THE QUESTIONS TOGETHER:
+        //HINT: for each question, create a container with the "question"
+        //create a radio button https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio with, as option the both the correct answer and the incorrect answers
+        //when EVERY question has an answer (google for how to get a value from a radio button with JS)
+        //IF YOU ARE DISPLAYING ONE QUESTION AT A TIME
+        //Display first question with a title + radio button
+        //when the user select the answer, pick the next question and remove this from the page after added in a varible the users' choice.
+      // };
+
+      //HOW TO calculate the result
+      //You can do it in 2 ways:
+      //If you are presenting all questions together, just take all the radio buttons and check if the selected answer === correct_answer
+      //If you are presenting one question at a time, just add one point or not to the user score if the selected answer === correct_answer
+    </script>
+    <!--Footer-->
+    <footer>
+      <div><!--Send us your feedback, to implement--></div>
+    </footer>
+  </body>
+</html>
