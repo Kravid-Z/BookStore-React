@@ -89,14 +89,14 @@ const questions = [
       incorrect_answers: ["True"],
     },
     {
-      category: "Science: Computers",
-      type: "multiple",
-      difficulty: "easy",
-      question:
-        "Which programming language shares its name with an island in Indonesia?",
-      correct_answer: "Java",
-      incorrect_answers: ["Python", "C", "Jakarta"],
-    },
+        category: "Science: Computers",
+        type: "multiple",
+        difficulty: "easy",
+        question:
+          "Which programming language shares its name with an island in Indonesia?",
+        correct_answer: "Java",
+        incorrect_answers: ["Python", "C", "Jakarta"],
+      },
   ];
 /** --------->  Pseudo Code <----------
 **---->GLOBAL VARIABLES<------**
@@ -186,18 +186,58 @@ saveScore()=>{
 4. Return her||his Brain$Coin when finish in new div with the usersname and userScore    
 */
 
+//  ---------------------------- HERE STARTS ----------------------->
 let userScore = 0
-let questionNumber = 0
 let userName = ""
+let questionOfGameUserMemory = [] 
+let questionsUserGame = []  // Memory of current users game 
+let memoryNumbers = [] // Memory of N, as reference of the i had passed to arrayOfQuestion[i]
 const arrayOfQuestion = questions
+
+const randomQ = (arraylength)=> {
+    let iOfQArr = Math.floor(Math.random() * (arraylength) + 1)
+    let newQ = arrayOfQuestion[iOfQArr]
+    return newQ    
+}
 // console.log(arrayOfQuestion[1].category) ---> Testing how to get acces each questionobject
 
+const giveScore = ()=>{
+    console.log("Please Create this function to see results user game")
+}
+
 const getQuestion = () => {
-let iOfArrayQ = (Math.random()*10 +1)
+    let q1 = randomQ(arrayOfQuestion.length)
+    let q2 = randomQ(arrayOfQuestion.length)
+    let q3 = randomQ(arrayOfQuestion.length)
+    let q4 = randomQ(arrayOfQuestion.length)
+    let q5 = randomQ(arrayOfQuestion.length)
+
+    if (questionsUserGame.length === 0) {
+        questionsUserGame.push(q1)
+    }
+
+    if (questionsUserGame.length > 0 && questionsUserGame.length < 5 ) {
+        // questionsUserGame.includes(q1) &&  q2 != q1 ? questionsUserGame.includes(q2) ? questionsUserGame.push(q3): questionsUserGame.push(q2) : questionsUserGame.push(q1) --> Trying to use ternary operator to solve the dilemma of the repeated question in the 5 events
+
+        //Seems switch goes well solving the dilemma of avoid a repeat question in five random events
+        switch (questionsUserGame) {
+            case !questionsUserGame.includes(q1):
+                questionsUserGame.push(q1)
+                break;
+            case questionsUserGame.includes(q1):
+                !questionsUserGame.includes(q2)? questionsUserGame.push(q2): !questionsUserGame.includes(q3)? questionsUserGame.push(q3): 1+1 // Is there a way to break a ternary operator when its false? Here I'm using 1+1, cause still did't catch other solution.
+                break;
+            default:
+                !questionsUserGame.includes(q4)? questionsUserGame.push(q4): !questionsUserGame.includes(q5)? questionsUserGame.push(q5): 1+1 // Is there a way to break a ternary operator when its false? Here I'm using 1+1, cause still did't catch other solution.
+                break;
+        }
+    }    
+    let lastQ = questionsUserGame.length - 1
+    return questionsUserGame[lastQ]
 }
-for (let i = 0; i < 20; i++) {
-    let iOfArrayQ = parseInt(Math.random()*10 +1)
-    console.log(iOfArrayQ)        
-}
-// let iOfArrayQ = parseInt((Math.random()*10 +1))
-// console.log(iOfArrayQ)
+//--------------------> Testing getQuestion() five times to avoid repeated question in five random events <------------- 
+// for (let i = 0; i < 5; i++) {
+// getQuestion()
+// }
+// console.log(questionsUserGame)
+//___________________________________________________________*
