@@ -192,19 +192,21 @@ let userName = ""
 let questionOfGameUserMemory = [] 
 let questionsUserGame = []  // Memory of current users game 
 let memoryNumbers = [] // Memory of N, as reference of the i had passed to arrayOfQuestion[i]
-const arrayOfQuestion = questions
+const arrayOfQuestion = questions // Creating a new const referencing my array of questions. Still I don't know why i did it? may be is unnecesary. 
+// console.log(arrayOfQuestion[1].category) ---> Testing how to get acces each questionobject
 
+// ******************************************************************************>> RANDOM Q FUNC
 const randomQ = (arraylength)=> {
     let iOfQArr = Math.floor(Math.random() * (arraylength) + 1)
     let newQ = arrayOfQuestion[iOfQArr]
     return newQ    
 }
-// console.log(arrayOfQuestion[1].category) ---> Testing how to get acces each questionobject
-
+// ******************************************************************************>> GIVE SCORE FUNC
 const giveScore = ()=>{
     console.log("Please Create this function to see results user game")
 }
 
+// ******************************************************************************>> GET QUESTION FUNC
 const getQuestion = () => {
     let q1 = randomQ(arrayOfQuestion.length)
     let q2 = randomQ(arrayOfQuestion.length)
@@ -233,7 +235,8 @@ const getQuestion = () => {
         }
     }    
     let lastQ = questionsUserGame.length - 1
-    return questionsUserGame[lastQ]
+    // return questionsUserGame[lastQ]
+    return createUserInterfaceQ(lastQ) // Idea is return a callback with function to create users interface question using as parameter my lastQ in this function
 }
 //--------------------> Testing getQuestion() five times to avoid repeated question in five random events <------------- 
 // for (let i = 0; i < 5; i++) {
@@ -241,3 +244,13 @@ const getQuestion = () => {
 // }
 // console.log(questionsUserGame)
 //___________________________________________________________*
+
+// ******************************************************************************>> CREATE USER INTERFACE Q FUNC
+ const createUserInterfaceQ = (lastQ) =>{
+     if (lastQ.type === "multiple") {
+        // Here will create user interface question if it's multiple type 
+
+     } else {
+        // Here will create user interface question if it's boolean type
+     }
+ }
