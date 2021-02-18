@@ -3,8 +3,8 @@
     WELCOME TO THE STRIVE TEAM GENERATOR!
 
     The app is pretty straight forward, use Bootstrap to add the following features:
-    - The user can add a list of names
-    - The user can set the number of teams
+    - The user can add a list of names // Source of the list? - add one by one | Add by copy paste a bunch|
+    - The user can set the number of teams // Implement a suggestion of quantity of teams could be generated taking in account the length od the list.
     - Every time the user clicks on the "assign" button, a random name is placed in a team and removed from the list
     - Each team should be inside a "column"
     - [EXTRA] Create a button to remove an user from a team, putting him back in the main list
@@ -26,8 +26,88 @@
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
       crossorigin="anonymous"
     />
+    <style>
+      h1{
+        color: #00ff84;
+      }
+      .my-bg-header{
+        background-color: #0d0e0e;
+      }
+      .my-bg-title{
+        background-color: #0d0e0e;
+        color:#00ff84
+      }
+      img.logo-White{
+        filter:invert(1);
+        max-height: 100px;
+        object-fit: scale-down;
+      }
+    </style>
+    
   </head>
   <body>
+<header class="container-fluid my-bg-header my-header-h">
+  <div class="row row-cols-1 row-cols-sm-2 align-items-center h-auto">
+    <div class="col d-flex justify-content-center">
+      <img src="./resources/strive_black.png" alt="Logo Strive-School" class="logo-White p-4">
+    </div>
+    <div class="col d-flex justify-content-center"> 
+    <h1>Pair Programming</h1>
+    </div>
+  </div>
+</header> 
+    
+<div class="container-fluid mt-3">
+  <div class="row row-cols-1 row-cols-md-2 align-items-center">
+    <div class="col strivers-list">
+      <div class="d-flex justify-content-center"><h2> Create Strivers List </h2></div>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><small>Name</small></span>
+        </div>
+        <input type="text" placeholder="First Name" aria-label="First name" class="form-control">
+        <input type="text" placeholder="Last Name"aria-label="Last name" class="form-control">
+      </div>
+    </div>
+    <div class="col controls-app">
+
+      <div class="btn-group-vertical" role="group" aria-label="Button group with nested dropdown">
+        <div class="btn-group" role="group">
+          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Choose how many participants...
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <a id="ten-list" class="dropdown-item ten-list" href="#">10</a>
+            <a id="twenty-list" class="dropdown-item participants-list" href="#">20</a>
+            <a id="thirty-list" class="dropdown-item participants-list" href="#">30</a>
+            <a id="fourty-list" class="dropdown-item participants-list" href="#">40</a>
+            <a id="fifty-list" class="dropdown-item participants-list" href="#">50</a>
+            <a id="sixty-list" class="dropdown-item participants-list" href="#">70</a>
+          </div>
+        </div>
+        <div class="btn-group" role="group">
+          <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Choose how many participants per team...
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
+            <a class="dropdown-item" href="#">2</a>
+            <a class="dropdown-item" href="#">3</a>
+            <a class="dropdown-item" href="#">4</a>
+            <a class="dropdown-item" href="#">5</a>
+          </div>
+        </div>
+        <button type="button" class="btn btn-secondary">Assign each team, one at a time</button>
+        <button type="button" class="btn btn-secondary">Generate all teams</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid d-flex justify-content-center strivers-teams mt-3 my-bg-title">
+  <h2> Ramdon Teams</h2>
+</div>
+
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -38,5 +118,8 @@
       integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
       crossorigin="anonymous"
     ></script>
+
+    <script src="indexapp.js"></script>
+
   </body>
 </html>
