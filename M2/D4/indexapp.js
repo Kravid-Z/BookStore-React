@@ -3,6 +3,7 @@ const striversList = document.querySelector("#strivers-list")
 const firstName = document.querySelector("#firstName")
 const lastName = document.querySelector("#lastName")
 const alertMssg = document.querySelector("#alertLastName")
+const operator = 0
 
 // **********>  FUNCTIONS
 //**---> Add condition to avoid adding a just the firstname to the list, it must be necesary always the last name so we could manage people with the same name. 
@@ -45,4 +46,15 @@ const addUserPressingEnter = (event) =>{
     if (event.keyCode === 13) {
         addUser()
     }
+}
+
+// const addingEventListener = () =>{
+//     const divdropmenu = document.getElementsByClassName(".dropdown-item")
+//    for (let i = 0; i < divdropmenu.length; i++) {
+//        divdropmenu.item(i).onclick = operatorFunc
+//    }
+// }
+
+const operatorFunc = (event)=>{
+    console.log(event)
 }
