@@ -3,9 +3,27 @@ const striversList = document.querySelector("#strivers-list")
 const firstName = document.querySelector("#firstName")
 const lastName = document.querySelector("#lastName")
 const alertMssg = document.querySelector("#alertLastName")
-const operator = 0
+const operator = 0  //? value default for button of teams, before start to create 
+const memoryParticipants = [/** Here will be my list of participants p1, p2, p3, p4... */]
+const memoryQofT = [ /**Here will be my numbers as index for teamsR array 1, 2, 3, 4... */] //---> operator for loop para crear la memoria
+const teamsR = [/** this will contain one array for each team ex: [Team1],[Team2]... */] // inside this will  be our teams in each array, operator will create with a forloop our arrays teams
+
 
 // **********>  FUNCTIONS
+//**--->Random func
+
+const getRandomOfArrays = (arraylength) => {
+let numberi = Math.floor(Math.random() * (arraylength) + 1)
+return numberi
+}
+//**---> Charging memoryQofT []
+
+const chargeMemoryQofT = (operator) => {
+    for (let i = 0; i < operator; i++) {
+        memoryQofT.push(i + 1) 
+    }
+}
+
 //**---> Add condition to avoid adding a just the firstname to the list, it must be necesary always the last name so we could manage people with the same name. 
 const addUser = ()=>{
     if (lastName.value === "") {
@@ -57,4 +75,40 @@ const addUserPressingEnter = (event) =>{
 
 const operatorFunc = (event)=>{
     console.log(event)
+}
+//-----------> Random Func
+
+const randomPandT = ()=>{
+    if (memoryParticipants[0] === undefined) {
+        /**Show message to user, please add participants to the list to be randomized in teams */
+        console.log("Participants not added")
+    } else if (operator === 0) {
+        /**Show message, please choose the number of teams you want to create */
+        console.log ("You dind't choose number of teams")
+    } else {
+        let nOfP = getRandomOfArrays(memoryParticipants.length) /** Random number from length of the array of memoryParticipants */
+        let p = memoryParticipants.splice(nOfP,1)  /** P is a new array just with my participants name of the participant randomized, splice(return always a new array with the participant taken from memoryof participants)*/
+        let participantsName = p.toString() //convert my array in a string
+        if (memoryQofT.length === 0) {
+            
+        } else {
+            
+        }
+        let nQofT = getRandomOfArrays(memoryQofT.length) /** index random from my memoryQofT (array of numbers will contain one reference to each index number of teams ) */
+        let nOfT = memoryQofT[nQofT] //nOfT -> will be the specific index stored in my memoryQofT, won't be one index of that memory, will be an index stored in that memory, (the reference will avoid apply to same team in each call to action of random addPtoT())
+        
+        let t = teamsR[nOfT] // t -> will contain the specific index to add my participant
+        
+        addPtoT(p,nOfT)
+
+        teamsR[t.push(participantsName)] 
+         
+    }
+        
+
+}
+
+//-----------> This function will add the random participant to a random team, and will receive as parameter P=(participant) and T=(Team#)
+const addPtoT = (p,nOfT) =>{
+
 }
