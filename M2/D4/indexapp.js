@@ -23,6 +23,13 @@ const chargeMemoryQofT = (operator) => {
         memoryQofT.push(i + 1) 
     }
 }
+/** Should call this func when user choose the quantity of teams */
+
+//**---> Creating our teams UI
+
+const createTeams = ()=>{
+    
+}
 
 //**---> Add condition to avoid adding a just the firstname to the list, it must be necesary always the last name so we could manage people with the same name. 
 const addUser = ()=>{
@@ -87,21 +94,25 @@ const randomPandT = ()=>{
         console.log ("You dind't choose number of teams")
     } else {
         let nOfP = getRandomOfArrays(memoryParticipants.length) /** Random number from length of the array of memoryParticipants */
-        let p = memoryParticipants.splice(nOfP,1)  /** P is a new array just with my participants name of the participant randomized, splice(return always a new array with the participant taken from memoryof participants)*/
+        let p = memoryParticipants.splice(nOfP,1)  /** P is a new array just with, participants name of the participant randomized, splice(return always a new array with the participant taken from memoryof participants)*/
         let participantsName = p.toString() //convert my array in a string
-        if (memoryQofT.length === 0) {
-            
-        } else {
-            
-        }
-        let nQofT = getRandomOfArrays(memoryQofT.length) /** index random from my memoryQofT (array of numbers will contain one reference to each index number of teams ) */
-        let nOfT = memoryQofT[nQofT] //nOfT -> will be the specific index stored in my memoryQofT, won't be one index of that memory, will be an index stored in that memory, (the reference will avoid apply to same team in each call to action of random addPtoT())
         
-        let t = teamsR[nOfT] // t -> will contain the specific index to add my participant
-        
-        addPtoT(p,nOfT)
+            if (memoryQofT.length === 0) {
+                chargeMemoryQofT()
+            } else {
+                let nQofT = getRandomOfArrays(memoryQofT.length) /** index random from my memoryQofT (array of numbers will contain one reference to each index number of teams ) */
+                
+                let nOfT = memoryQofT[nQofT] //nOfT -> will be the specific index stored in my memoryQofT, won't be one index of that memory, will be an index stored in that memory, (the reference will avoid apply to same team in each call to action of random addPtoT())
 
-        teamsR[t.push(participantsName)] 
+                let t = teamsR[nOfT] // t -> will contain the specific index to add my participant
+
+                addPtoT(p,nOfT)
+            
+                teamsR[t.push(participantsName)] 
+                memoryQofT.splice(nQofT,1)
+
+            }
+
          
     }
         
