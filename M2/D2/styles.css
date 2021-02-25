@@ -1,0 +1,18 @@
+body{
+    margin: 0;
+    background-color: black;
+    color: white
+}
+
+header {
+    height: 8vh;
+}
+
+.jumbotron{
+    background-image: url("https://placeimg.com/640/480/nature/grayscale");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card{
+    height: 250px;
+}
