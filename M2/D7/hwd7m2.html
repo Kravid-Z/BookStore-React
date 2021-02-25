@@ -28,6 +28,7 @@
             EX9) Write a selector to target the "back to top" link     #### EXTRA Try doing it without targeting the footer element directly
             EX10) Write a selector to target the footer
         */
+       
     </style>
     <meta charset="utf-8" />
     <meta
@@ -61,12 +62,16 @@
 
       }
     /*EX2*/
-      nav>a.text-muted {
-        color: red !important;
+     .nav-scroller > nav a{
+        border: solid red 1px;
+      }
+      .nav-scroller > nav a{
+        color: red !important; /*important was necesary hear because was an imoprtant keyword in bootstrapstyle.css*/
       }
     /*EX3*/
       div.jumbotron p.lead>a.text-white{
-        color:red !important; 
+        color:red !important; /*important was necesary hear because was an imoprtant keyword in bootstrapstyle.css*/
+        border: solid white 1px;
       }
     /*EX4*/
     div.blog-main >div:first-of-type{
@@ -77,7 +82,9 @@
     color:blueviolet  !important;
     }
     /*EX6*/
-    
+    div.blog-main >div:last-child{
+      background-color:coral;
+    }
     /*EX7*/
     /*EX8*/
     /*EX9*/
