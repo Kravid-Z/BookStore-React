@@ -1,4 +1,22 @@
+body{
+    font-family: 'Lato', sans-serif;
+    background-color: rgb(216, 216, 216) ;
+}
 .my-logo{
     height: 35px;
     width: 35px;
+}
+.title-section{
+    height: 32px;
+}
+.title-section h2{
+    font-size: 16px;
+    font-weight: 600;
+}
+.my-spots-img{
+    max-height: 396px;
+    object-fit: contain;
+}
+a.nav-link {
+    font-size: 14px;
 }
