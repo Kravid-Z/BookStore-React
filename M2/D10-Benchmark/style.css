@@ -41,4 +41,9 @@ div.card, h6.card-title {
    height: 30px;
    width: 33px;
    padding: 0;
+   opacity: 0;
+}
+
+div .my-button-card{
+    opacity: 1;
 }
