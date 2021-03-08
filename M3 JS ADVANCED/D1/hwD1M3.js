@@ -50,9 +50,9 @@ const whoIsTheLargest = (a,b,c)=>{
     a > b && c ? largest = a : b > c && a ? largest = b : largest = c
     return largest
 }
-console.log(whoIsTheLargest(1,2,3));
-console.log(whoIsTheLargest(6,5,4));
-console.log(whoIsTheLargest(7,9,8));
+// console.log(whoIsTheLargest(1,2,3));
+// console.log(whoIsTheLargest(6,5,4));
+// console.log(whoIsTheLargest(7,9,8));
 /*
 5)
 Create a function to check whether two numbers are in range 40..60 or in the range 70..100 inclusive.
@@ -146,20 +146,25 @@ Create a function to test whether an array of integers of length 2 contains 1 or
 */
 let array1 = [1,2]
 let array3 = [3,2]
+let array4 = [4,3]
 let array0 = [5,4]
 
 const arrayof2Int = (array)=>{
-   return array.inlcudes(1||3)
+   let answer = "" 
+    return array.includes(1) || array.includes(3)? answer = "Contains 1 || 3": answer = "Not contain 1 || 3"
 }
 
 // console.log(arrayof2Int(array1))
 // console.log(arrayof2Int(array3))
+// console.log(arrayof2Int(array4))
 // console.log(arrayof2Int(array0))
 /*
 
 10)
 
 Create a function to test whether an array of integers of length 2 does not contain 1 or a 3
+
+
 
 11)
 
