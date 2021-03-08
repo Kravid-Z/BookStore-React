@@ -50,9 +50,9 @@ const whoIsTheLargest = (a,b,c)=>{
     a > b && c ? largest = a : b > c && a ? largest = b : largest = c
     return largest
 }
-// console.log(whoIsTheLargest(1,2,3));
-// console.log(whoIsTheLargest(6,5,4));
-// console.log(whoIsTheLargest(7,9,8));
+console.log(whoIsTheLargest(1,2,3));
+console.log(whoIsTheLargest(6,5,4));
+console.log(whoIsTheLargest(7,9,8));
 /*
 5)
 Create a function to check whether two numbers are in range 40..60 or in the range 70..100 inclusive.
@@ -136,7 +136,7 @@ const sum3OfArray = (array)=>{
     return `Array have more than 4 elements to sum`
 
 }
-console.log(sum3OfArray(arr));
+// console.log(sum3OfArray(arr));
 // console.log(sum3OfArray(otherarr));
 
 /*
@@ -149,18 +149,12 @@ let array3 = [3,2]
 let array0 = [5,4]
 
 const arrayof2Int = (array)=>{
-    let answer = undefined
-
-    for (let i = 0; i < array.length; i++) {
-        array[i] === 1 || array[i] === 3? answer = "contains 1 or 3": answer ="Not contains"      
-    }
-
-    return answer
+   return array.inlcudes(1||3)
 }
 
-console.log(arrayof2Int(array1))
-console.log(arrayof2Int(array3))
-console.log(arrayof2Int(array0))
+// console.log(arrayof2Int(array1))
+// console.log(arrayof2Int(array3))
+// console.log(arrayof2Int(array0))
 /*
 
 10)
