@@ -163,13 +163,26 @@ const arrayof2Int = (array)=>{
 10)
 
 Create a function to test whether an array of integers of length 2 does not contain 1 or a 3
-
-
-
+*/
+// console.log(arrayof2Int([5,6]));
+/*
 11)
 
 Create a function to find the longest string from a given array of strings.
+*/
+const arrayOfStr = ["Hello", "Hi", "Good Morning"]
 
+const findTheLongest = (array)=>{
+    let longest =""
+    for (const str of array) {
+     longest = Math.max(str.length)   
+    }
+    longest.indexOf()
+    return longest
+}
+console.log(findTheLongest(arrayOfStr));
+
+/*
 12)
 
 Create a function to find the types of a given angle.
@@ -179,27 +192,39 @@ Types of angles:
     Right angle: An 90 degree angle.
     btuse angle: An angle between 90 and 180 degrees.
     Straight angle: A 180 degree angle.
+*/
 
+/*
 13)
 
 Create a function to find the index of the greatest element of a given array of integers
+*/
 
+/*
 14)
 
 Create a function to get the largest even number from an array of integers.
+*/
 
+/*
 16)
 
 Create a function to check from two given integers, whether one is positive and another one is negative.
+*/
 
+/*
 17)
 
 Create a function to create new string with first 3 characters are in lower case and the others in upper case. If the string length is less than 3 convert all the characters in upper case. 
+*/
 
+/*
 18)
 
 Create a function to calculate the sum of the two given integers, If the sum is in the range 50..80 return 65 other wise return 80.
+*/
 
+/*
 19)
 
 Create a function to convert a number to a string, the contents of which depend on the number's factors. Follow next example:
@@ -215,8 +240,12 @@ this would be a simple "Stefano".
 this would be a "DiegoRiccardo".
 34 has four factors: 1, 2, 17, and 34.
 this would be "34".
+*/
 
+/*
 20)
 Create a function that given a phrase returns its acronym, like British Broadcasting Corporation returns BBC
+*/
 
+/*
 */
