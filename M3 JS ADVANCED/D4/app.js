@@ -15,7 +15,10 @@ window.onload = () =>{
           <div class="col-md-8">
             <div class="card-body">
               <h6 class="card-title">${curr.title}</h6>
-              <p class="card-text"><small class="text-muted">${curr.category}</small></p>
+              <p class="card-text">
+              <small class="font-weight-light">Category</small><br>  
+              <small class="text-muted text-monospace">${curr.category}</small>
+                </p>
               <div class="btn-group" role="group" aria-label="...">
                 <button id="addToCard" onclick="passToWishList(${curr.asin})" type="button" class="btn btn-warning"><i class="fas fa-shopping-cart"></i> <span class="">${curr.price}</span></button>
                 <button id="skip" type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button>
