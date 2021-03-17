@@ -1,38 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="Description" content="Enter your description here"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-<!-- <link rel="stylesheet" href="assets/css/style.css"> -->
-<title>Back Office Amazon</title>
-<style>
-    /* .card{
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="Description" content="Enter your description here" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <title>Back Office Amazon</title>
+    <style>
+      /* .card{
         height: 195px;
     } */
-</style>
-</head>
-<body>
+    </style>
+  </head>
+  <body>
     <!--Here Starts Navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Amazon Book</a>
-        <span><i class="fas fa-store text-white-50"></i></span>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="./index.html">Store</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="./backOfficePage.html">Back Office <span class="sr-only">(current)</span></a>
-            </li>
-            <!-- <li class="nav-item dropdown">
+      <a class="navbar-brand" href="#">Amazon Book</a>
+      <span><i class="fas fa-store text-white-50"></i></span>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html">Store</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="./backOfficePage.html"
+              >Back Office <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown
               </a>
@@ -46,76 +62,89 @@
             <li class="nav-item">
               <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
             </li> -->
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </div>
-      </nav>
-    <!--Here Starts Main Section-->    
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+    </nav>
+    <!--Here Starts Main Section-->
     <main class="container-fluid">
-
-        <div id="jsEntryPoint" class="container py-3 text-center">
+      <div id="jsEntryPoint" class="container py-3">
         <!--Here will inject each page-->
+        <div class="row">
+          <div class="col col-md-6 offset-md-3 text-center">
             <h1>BackOffice</h1>
-            <div class="row">
-                <div class="col col-md-6">
-                <h2>Create product in store</h2>
-              <form onsubmit="handleSubmit(event)">
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">Select a book to add at the store</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                  <label for="description">Book description</label>
-                  <textarea
-                    id="description"
-                    rows="4"
-                    class="form-control"
-                    placeholder="Write the book description here"
-                  ></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="price">Book price</label>
-                  <input
-                    id="price"
-                    type="number"
-                    class="form-control"
-                    placeholder="Write the Book price here"
-                  />
-                </div>
-                <div class="form-group">
-                  <button class="btn btn-primary" type="submit">
-                    Add to Store
-                  </button>
-                </div>
-              </form>
-                </div>
-                <div id="entryPointCard" class="col col-md-5">
-                    <!--Here will inject a preview of the card Book to Add at the STORE-->
-                </div>
-            </div>
+          </div>
         </div>
-
+        <div class="row">
+          <div class="col col-md-6">
+            <h2>Create product in store</h2>
+            <form onsubmit="handleSubmit(event)">
+              <div class="form-group">
+                <label for="bookSelected"
+                  >Select a book to add at the store</label
+                >
+                <select
+                  class="form-control"
+                  id="bookSelected"
+                  onchange="renderBookPreview(this.value)"
+                >
+                  <option>1</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <span class="asin-book"><!--ASIN to check--></span>
+              </div>
+              <div class="form-group">
+                <label for="description">Book description</label>
+                <textarea
+                  id="description"
+                  rows="4"
+                  class="form-control"
+                  placeholder="Products that have a meaningful description, have double chance in sales... Please add one for your product"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="price">Book price</label>
+                <input
+                  id="price"
+                  type="number"
+                  class="form-control"
+                  placeholder="Write the Book price here"
+                />
+                <small class="text-muted"
+                  ><sup>*</sup> If you don't change the price, will take the
+                  suggested price.</small
+                >
+              </div>
+              <div class="form-group">
+                <button class="btn btn-primary" type="submit">
+                  Add to Store
+                </button>
+              </div>
+            </form>
+          </div>
+          <div id="bookPreview" class="col col-md-5">
+            <!--Here will inject a preview of the card Book to Add at the STORE-->
+          </div>
+        </div>
+      </div>
     </main>
-    <!--Here Starts footer-->    
-    <footer>
+    <!--Here Starts footer-->
+    <footer></footer>
 
-    </footer>
-
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
-<script src="./backOffice.js"></script>
-</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script src="./backOffice.js"></script>
+  </body>
 </html>

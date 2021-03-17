@@ -54,25 +54,63 @@ book = {
 
  */
 
-const booksUrl = "https://striveschool-api.herokuapp.com/books";
-let choiceList = document.querySelector("select");
+let books;
 
-const createOptionBook = (book)=>{
-    return ` <option> ${book.title} <span>Asin: ${book.asin}</span></option>`
+const booksUrl = "https://striveschool-api.herokuapp.com/books";
+const choiceList = document.querySelector("select");
+const optionsTags = document.getElementsByTagName("option");
+const bookPreviewCol = document.querySelector("#bookPreview");
+const inputPrice = document.querySelector("#price")
+
+const createOptionBook = (book) => {
+  return ` <option value="${book.asin}"> ${book.title}</option>`;
 };
 
-const populatechioceList=(prev,book)=>{
-    return prev + createOptionBook(book)
-}
+const populatechioceList = (prev, book) => {
+  return prev + createOptionBook(book);
+};
+
+const renderBookPreview = (value) => {
+  bookPreviewCol.innerHTML = "";
+  console.log(value);
+  let bookSelected = books.filter((book) => book.asin === value);
+  console.log(bookSelected);
+  inputPrice.setAttribute("placeholder",`This is a suggest Price: ${bookSelected[0].price}`)
+  
+  let renderCardPreview = ` <div class="col">
+                                <div class="card mb-3" style="max-width: 440px;">
+                                    <div class="row no-gutters">
+                                      <div class="col-md-4">
+                                        <img class="img-fluid" src="${bookSelected[0].img}" alt="Book Cover">
+                                      </div>
+                                      <div class="col-md-8">
+                                        <div class="card-body">
+                                          <h5 class="card-title">${bookSelected[0].title}</h5>
+                                          <p class="card-text">Dummy description : This a great Betseller</p>
+                                          <p> <span class ="text-monospace"> Category: ${bookSelected[0].category}</span></p>
+                                          <button type="button" class="btn btn-outline-warning btn-sm"> <span class="px-2"><i class="fas fa-shopping-cart"></i></span> <span class="lead" > Price: ${bookSelected[0].price}</span></button> 
+                                          <!--book.brand === book.category from the other API-->
+                                          <p class="card-text"><small class="text-muted">Last updated: Dummy Time 14:50</small></p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                            </div>`;
+bookPreviewCol.innerHTML = renderCardPreview
+};
 
 const getBooksfromApi = () => {
   fetch(booksUrl)
     .then((response) => response.json())
-    .then((books) => {
-      console.log(books);
-      const listOptions = books.reduce((prev,book)=>populatechioceList(prev,book),"")
+    .then((_books) => {
+      books = _books;
+
+      const listOptions = _books.reduce(
+        (prev, book) => populatechioceList(prev, book),
+        ""
+      );
       choiceList.innerHTML = "";
-      choiceList.innerHTML = listOptions
+      choiceList.innerHTML = listOptions;
     });
 };
 
