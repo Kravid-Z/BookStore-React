@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
-<title>Amazon Book Store</title>
+<title>Back Office Amazon</title>
 <style>
     /* .card{
         height: 195px;
@@ -26,11 +26,11 @@
       
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="./index.html">Store <span class="sr-only">(current)</span></a>
-            </li>
             <li class="nav-item">
-              <a class="nav-link" href="./backOfficePage.html">Back Office</a>
+              <a class="nav-link" href="./index.html">Store</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="./backOfficePage.html">Back Office <span class="sr-only">(current)</span></a>
             </li>
             <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -58,6 +58,50 @@
 
         <div id="jsEntryPoint" class="container py-3 text-center">
         <!--Here will inject each page-->
+            <h1>BackOffice</h1>
+            <div class="row">
+                <div class="col col-md-6">
+                <h2>Create product in store</h2>
+              <form onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Select a book to add at the store</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                  <label for="description">Book description</label>
+                  <textarea
+                    id="description"
+                    rows="4"
+                    class="form-control"
+                    placeholder="Write the book description here"
+                  ></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="price">Book price</label>
+                  <input
+                    id="price"
+                    type="number"
+                    class="form-control"
+                    placeholder="Write the Book price here"
+                  />
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary" type="submit">
+                    Add to Store
+                  </button>
+                </div>
+              </form>
+                </div>
+                <div id="entryPointCard" class="col col-md-5">
+                    <!--Here will inject a preview of the card Book to Add at the STORE-->
+                </div>
+            </div>
         </div>
 
     </main>
@@ -72,6 +116,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
-<script src="./index.js"></script>
+<script src="./backOffice.js"></script>
 </body>
 </html>
