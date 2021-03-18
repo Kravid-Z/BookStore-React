@@ -60,24 +60,45 @@ let megaSaleList = document.querySelector("#megaSaleList");
 const urlGetMethod = "https://striveschool-api.herokuapp.com/api/product/"; //GET method to this Api, will bring me array with objects
 
 const renderCardBook = (book) => {
-  return `<div class="col">
+    return `<div class="col ">
     <div class="card mb-3" style="max-width: 440px;">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img class="img-fluid" src="${book.imageUrl}"alt="Book Cover">
+            <img class="img-fluid" src="${book.imageUrl}" alt="Book Cover">
           </div>
           <div class="col-md-8">
-            <div class="card-body">
+            <div class="card-body text-center py-0">
               <h5 class="card-title">${book.name}</h5>
-              <p class="card-text">${book.description}</p>
-              <p> <span>${book.brand}</span><span>${book.price}</span> </p> 
+              <small class="card-text mb-0">Dummy description : This a great Betseller</small>
+              <div>
+                <button type="button" class="btn btn-outline-warning btn-sm my-1"> <span class="px-2"><i class="fas fa-shopping-cart"></i></span> <span class="lead" > ${book.price} €</span></button> 
+              </div>
+              <div class ="text-monospace"> Category: ${book.brand}</div>
               <!--book.brand === book.category from the other API-->
               <p class="card-text"><small class="text-muted">Last updated: ${book.updatedAt}</small></p>
             </div>
           </div>
         </div>
       </div>
-</div>`;
+</div>`
+//   return `<div class="col">
+//     <div class="card mb-3" style="max-width: 440px;">
+//         <div class="row no-gutters">
+//           <div class="col-md-4">
+//             <img class="img-fluid" src="${book.imageUrl}"alt="Book Cover">
+//           </div>
+//           <div class="col-md-8">
+//             <div class="card-body">
+//               <h5 class="card-title">${book.name}</h5>
+//               <p class="card-text">${book.description}</p>
+//               <p> <span>${book.brand}</span><span>${book.price}</span> </p> 
+//               <!--book.brand === book.category from the other API-->
+//               <p class="card-text"><small class="text-muted">Last updated: ${book.updatedAt}</small></p>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+// </div>`;
 };
 
 window.onload = () => {
