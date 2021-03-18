@@ -71,6 +71,8 @@ const choiceList = document.querySelector("select");
 const optionsTags = document.getElementsByTagName("option");
 const bookPreviewCol = document.querySelector("#bookPreview");
 const listAvailables = document.querySelector("#listAvailables");
+
+
 //Inputs Form
 const inputPrice = document.querySelector("#price");
 const inputDescription = document.querySelector("#description");
@@ -164,7 +166,7 @@ const checkPriceAndDescription = async () => {
     if (newBookStore.description && newBookStore.price) {
       console.log("Send Data");
       //Send Data
-      fetch(urlPostMethod, {
+      fetch(dataBaseStoreUrl, {
         method: "POST",
         body: JSON.stringify(newBookStore),
         headers: {
@@ -208,8 +210,8 @@ const renderrowList = (bookr) => {
         <td>${bookr.name}</td>
         <td>${bookr.price}</td>
         <td>
-            <button id="edit-${bookr._id}" type="button" class="btn btn-primary btn-sm"><small>Edit</small> <span><i class="far fa-edit"></i></span></button>
-            <button id="delete-${bookr._id}" type="button" class="btn btn-danger btn-sm"><small>Delete</small> <span><i class="fas fa-trash-alt"></i></span></button>
+            <button id="${bookr._id}" type="button" class="btn btn-primary btn-sm edit-dataBase-Store-button"><small>Edit</small> <span><i class="far fa-edit"></i></span></button>
+            <button id="${bookr._id}" type="button" class="btn btn-danger btn-sm delete-dataBase-Store-button"><small>Delete</small> <span><i class="fas fa-trash-alt"></i></span></button>
         </td>
     </tr>
     `;
@@ -217,6 +219,12 @@ const renderrowList = (bookr) => {
 const renderAllList = (prev, bookr) => {
   return prev + renderrowList(bookr);
 };
+
+const getIdToDelete = function () {
+    let idToDelete = this.id
+    console.log(idToDelete);
+    // return idToDelete
+}
 
 const getDataBaseUpdatedStore = () => {
   fetch(dataBaseStoreUrl, {
@@ -229,18 +237,24 @@ const getDataBaseUpdatedStore = () => {
     .then((response) => response.json())
     .then((booksInStore) => {
       booksAvailableInStore = booksInStore;
-
       const stringListToRender = booksAvailableInStore.reduce(
         (prev, bookr) => renderAllList(prev, bookr),
         ""
       );
       listAvailables.innerHTML = "";
       listAvailables.innerHTML = stringListToRender;
+      const deleteButtons = [...document.getElementsByClassName("delete-dataBase-Store-button")]
+      deleteButtons.forEach(button => button.addEventListener(onclick, function () {getIdToDelete(this.id)}))
+
     });
 };
 // Fetch data To Data Base Store DELETE ===============================================================================================================
+
 const deleteFromDataBaseStore = () => {
-  fetch(dataBaseStoreUrl, {
+    
+    getIdToDelete
+
+  fetch(dataBaseStoreUrl+idToDelete, {
     method: "DELETE",
     headers: {
       Authorization:
