@@ -62,6 +62,7 @@ const optionsTags = document.getElementsByTagName("option");
 const bookPreviewCol = document.querySelector("#bookPreview");
 const inputPrice = document.querySelector("#price")
 
+
 const createOptionBook = (book) => {
   return ` <option value="${book.asin}"> ${book.title}</option>`;
 };
@@ -76,7 +77,6 @@ const renderBookPreview = (value) => {
   let bookSelected = books.filter((book) => book.asin === value);
   console.log(bookSelected);
   inputPrice.setAttribute("placeholder",`This is a suggest Price: ${bookSelected[0].price}`)
-  
   let renderCardPreview = ` <div class="col ">
                                 <div class="card mb-3" style="max-width: 440px;">
                                     <div class="row no-gutters">
@@ -86,8 +86,10 @@ const renderBookPreview = (value) => {
                                       <div class="col-md-8">
                                         <div class="card-body text-center py-0">
                                           <h5 class="card-title">${bookSelected[0].title}</h5>
-                                          <p class="card-text mb-0">Dummy description : This a great Betseller</p>
-                                          <button type="button" class="btn btn-outline-warning btn-sm"> <span class="px-2"><i class="fas fa-shopping-cart"></i></span> <span class="lead" > ${bookSelected[0].price} €</span></button> 
+                                          <small class="card-text mb-0">Dummy description : This a great Betseller</small>
+                                          <div>
+                                            <button type="button" class="btn btn-outline-warning btn-sm my-1"> <span class="px-2"><i class="fas fa-shopping-cart"></i></span> <span class="lead" > ${bookSelected[0].price} €</span></button> 
+                                          </div>
                                           <div class ="text-monospace"> Category: ${bookSelected[0].category}</div>
                                           <!--book.brand === book.category from the other API-->
                                           <p class="card-text"><small class="text-muted">Last updated: Dummy Time 14:50</small></p>
@@ -96,6 +98,10 @@ const renderBookPreview = (value) => {
                                     </div>
                                   </div>
                             </div>`;
+// if (bookSelected[0].title.length > 40) {
+//     const h5CardTitle = document.querySelector(".card-title")
+//     h5CardTitle.classList.add("text-truncate")
+// }
 bookPreviewCol.innerHTML = renderCardPreview
 };
 
