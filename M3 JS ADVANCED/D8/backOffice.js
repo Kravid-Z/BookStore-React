@@ -61,14 +61,16 @@ book = {
 
  */
 
-let books;
+let books; // array with books from booksUrlMotherDataBAse
+let booksAvailableInStore; // array with books from dataBaseStoreUrl
 let bookSelected;
 let newBookStore;
-const urlPostMethod = "https://striveschool-api.herokuapp.com/api/product/";
-const booksUrl = "https://striveschool-api.herokuapp.com/books";
+const booksUrlMotherDataBAse = "https://striveschool-api.herokuapp.com/books";
+const dataBaseStoreUrl = "https://striveschool-api.herokuapp.com/api/product/";
 const choiceList = document.querySelector("select");
 const optionsTags = document.getElementsByTagName("option");
 const bookPreviewCol = document.querySelector("#bookPreview");
+const listAvailables = document.querySelector("#listAvailables");
 //Inputs Form
 const inputPrice = document.querySelector("#price");
 const inputDescription = document.querySelector("#description");
@@ -98,7 +100,7 @@ const renderBookPreview = (value) => {
                                       <div class="col-md-8">
                                         <div class="card-body text-center py-0">
                                           <h5 class="card-title">${bookSelected[0].title}</h5>
-                                          <small class="card-text mb-0">Dummy description : This a great Betseller</small>
+                                          <small class="card-text mb-0">Dummy description : This a great Betseller </small>
                                           <div>
                                             <button type="button" class="btn btn-outline-warning btn-sm my-1"> <span class="px-2"><i class="fas fa-shopping-cart"></i></span> <span class="lead" > ${bookSelected[0].price} €</span></button> 
                                           </div>
@@ -132,8 +134,9 @@ const renderBookPreview = (value) => {
   console.log(newBookStore);
 };
 
+//Fetch Data From booksUrlMotherDataBAse ===============================================================================================================
 const getBooksfromApi = () => {
-  fetch(booksUrl)
+  fetch(booksUrlMotherDataBAse)
     .then((response) => response.json())
     .then((_books) => {
       books = _books;
@@ -196,6 +199,66 @@ const sendDataServer = (e) => {
   }
 };
 
+// Fetch data From Data Base Store ===============================================================================================================
+
+const renderrowList = (bookr) => {
+  return `
+    <tr>
+        <th scope="row">${bookr._id}</th>
+        <td>${bookr.name}</td>
+        <td>${bookr.price}</td>
+        <td>
+            <button id="edit-${bookr._id}" type="button" class="btn btn-primary btn-sm"><small>Edit</small> <span><i class="far fa-edit"></i></span></button>
+            <button id="delete-${bookr._id}" type="button" class="btn btn-danger btn-sm"><small>Delete</small> <span><i class="fas fa-trash-alt"></i></span></button>
+        </td>
+    </tr>
+    `;
+};
+const renderAllList = (prev, bookr) => {
+  return prev + renderrowList(bookr);
+};
+
+const getDataBaseUpdatedStore = () => {
+  fetch(dataBaseStoreUrl, {
+    method: "GET",
+    headers: {
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDUxZThjMTg5YzI2ZjAwMTU3ZjljMjgiLCJpYXQiOjE2MTU5ODA3MzgsImV4cCI6MTYxNzE5MDMzOH0.7ecaHsVow0aLX_UvZMM5X65HUmrVhWqs445ZEX-G258",
+    },
+  })
+    .then((response) => response.json())
+    .then((booksInStore) => {
+      booksAvailableInStore = booksInStore;
+
+      const stringListToRender = booksAvailableInStore.reduce(
+        (prev, bookr) => renderAllList(prev, bookr),
+        ""
+      );
+      listAvailables.innerHTML = "";
+      listAvailables.innerHTML = stringListToRender;
+    });
+};
+// Fetch data To Data Base Store DELETE ===============================================================================================================
+const deleteFromDataBaseStore = () => {
+  fetch(dataBaseStoreUrl, {
+    method: "DELETE",
+    headers: {
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDUxZThjMTg5YzI2ZjAwMTU3ZjljMjgiLCJpYXQiOjE2MTU5ODA3MzgsImV4cCI6MTYxNzE5MDMzOH0.7ecaHsVow0aLX_UvZMM5X65HUmrVhWqs445ZEX-G258",
+    },
+  })
+    .then((response) => {
+      if (response.ok) {
+        alert("Product deleted successfully");
+        // window.location.assign("index.html");
+      } else {
+        alert("something went wrong with the deletion process");
+      }
+    })
+    .catch((err) => console.log(err));
+};
+
 window.onload = () => {
   getBooksfromApi();
+  getDataBaseUpdatedStore();
 };

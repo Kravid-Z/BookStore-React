@@ -57,7 +57,7 @@ jsEntryPoint.innerHTML = bodyStorePage;
 let megaSaleList = document.querySelector("#megaSaleList");
 
 //SRC GET
-const urlGetMethod = "https://striveschool-api.herokuapp.com/api/product/"; //GET method to this Api, will bring me array with objects
+const dataBaseStore = "https://striveschool-api.herokuapp.com/api/product/"; //GET method to this Api, will bring me array with objects
 
 const renderCardBook = (book) => {
     return `<div class="col ">
@@ -104,7 +104,7 @@ const renderCardBook = (book) => {
 window.onload = () => {
   console.log("Page loaded");
   const getAvailableBooks = () => {
-    fetch(urlGetMethod, {
+    fetch(dataBaseStore, {
       method: "GET",
       headers: {
         Authorization:
