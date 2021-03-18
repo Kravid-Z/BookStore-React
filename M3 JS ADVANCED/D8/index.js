@@ -48,23 +48,23 @@ console.log("Index => connected");
 ----End Body HomeP----------------------
  */
 //Global Elements Target
-let jsEntryPoint = document.getElementById("jsEntryPoint")
+let jsEntryPoint = document.getElementById("jsEntryPoint");
 
 let bodyStorePage = ` <h2>Mega-sale Books</h2>
                         <div id="megaSaleList" class="row row-cols-sm-1 row-cols-md-3">
-                        </div>`
-jsEntryPoint.innerHTML = bodyStorePage
-let megaSaleList = document.querySelector("#megaSaleList")
+                        </div>`;
+jsEntryPoint.innerHTML = bodyStorePage;
+let megaSaleList = document.querySelector("#megaSaleList");
 
 //SRC GET
 const urlGetMethod = "https://striveschool-api.herokuapp.com/api/product/"; //GET method to this Api, will bring me array with objects
 
-const renderCardBook = (book) =>{
-    return `<div class="col">
+const renderCardBook = (book) => {
+  return `<div class="col">
     <div class="card mb-3" style="max-width: 440px;">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img class="img-fluid" src=${book.imageUrl}alt="Book Cover">
+            <img class="img-fluid" src="${book.imageUrl}"alt="Book Cover">
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -77,8 +77,8 @@ const renderCardBook = (book) =>{
           </div>
         </div>
       </div>
-</div>`
-}
+</div>`;
+};
 
 window.onload = () => {
   console.log("Page loaded");
@@ -91,15 +91,36 @@ window.onload = () => {
       },
     })
       .then((response) => response.json())
-      .then(data =>{
-          console.log(data);
-          megaSaleList.innerHTML = "" // clean my list cards
-          const renderAvailableBooks = (prev,book)=>{
-              return prev + renderCardBook(book)
-          }
-          const availableBooks = data.reduce((prev,book)=>renderAvailableBooks(prev,book),"")
-          megaSaleList.innerHTML = availableBooks   
-      }).catch(err => {console.log(err);});
+      .then((data) => {
+        console.log(data);
+        megaSaleList.innerHTML = ""; // clean my list cards
+        const renderAvailableBooks = (prev, book) => {
+          return prev + renderCardBook(book);
+        };
+        const availableBooks = data.reduce(
+          (prev, book) => renderAvailableBooks(prev, book),
+          ""
+        );
+        megaSaleList.innerHTML = availableBooks;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   getAvailableBooks();
 };
+
+/**
+ *  fetch(urlPostMethod, {
+      method: "POST",
+      body: JSON.stringfy(newBookStore),
+      headers: {
+          Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDUxZThjMTg5YzI2ZjAwMTU3ZjljMjgiLCJpYXQiOjE2MTU5ODA3MzgsImV4cCI6MTYxNzE5MDMzOH0.7ecaHsVow0aLX_UvZMM5X65HUmrVhWqs445ZEX-G258",
+          "Content-Type:" "application/json"  
+        },
+    })
+      .then((response) => {
+          if (response.ok))
+      })
+ */

@@ -16,6 +16,13 @@ console.log("backOffice => connected");
             booksUrl =  https://striveschool-api.herokuapp.com/books
 
             fetch(books)
+
+            fetch(""){
+                method:"POST",
+                body: JSON.stringfy(),
+                headers: {"Content-Type:" "application/json",
+            }
+            if (response.ok){alert("book added to store")}else {aler("error some went wrong")}
  */
 
 //<----------------------------------------------------------------------------------------&&------------------------------------------------------------------------>
@@ -55,13 +62,18 @@ book = {
  */
 
 let books;
-
+let bookSelected;
+let newBookStore;
+const urlPostMethod = "https://striveschool-api.herokuapp.com/api/product/";
 const booksUrl = "https://striveschool-api.herokuapp.com/books";
 const choiceList = document.querySelector("select");
 const optionsTags = document.getElementsByTagName("option");
 const bookPreviewCol = document.querySelector("#bookPreview");
-const inputPrice = document.querySelector("#price")
-
+//Inputs Form
+const inputPrice = document.querySelector("#price");
+const inputDescription = document.querySelector("#description");
+const asinBook = document.querySelector("#asinBook");
+const buttonAddToStore = document.querySelector("#addToStore");
 
 const createOptionBook = (book) => {
   return ` <option value="${book.asin}"> ${book.title}</option>`;
@@ -74,9 +86,9 @@ const populatechioceList = (prev, book) => {
 const renderBookPreview = (value) => {
   bookPreviewCol.innerHTML = "";
   console.log(value);
-  let bookSelected = books.filter((book) => book.asin === value);
+  bookSelected = books.filter((book) => book.asin === value);
   console.log(bookSelected);
-  inputPrice.setAttribute("placeholder",`This is a suggest Price: ${bookSelected[0].price}`)
+  inputPrice.setAttribute("placeholder", `${bookSelected[0].price}`);
   let renderCardPreview = ` <div class="col ">
                                 <div class="card mb-3" style="max-width: 440px;">
                                     <div class="row no-gutters">
@@ -98,11 +110,26 @@ const renderBookPreview = (value) => {
                                     </div>
                                   </div>
                             </div>`;
-// if (bookSelected[0].title.length > 40) {
-//     const h5CardTitle = document.querySelector(".card-title")
-//     h5CardTitle.classList.add("text-truncate")
-// }
-bookPreviewCol.innerHTML = renderCardPreview
+  // if (bookSelected[0].title.length > 40) {
+  //     const h5CardTitle = document.querySelector(".card-title")
+  //     h5CardTitle.classList.add("text-truncate")
+  // }
+
+  bookPreviewCol.innerHTML = renderCardPreview;
+
+  newBookStore = {
+    name: bookSelected[0].title,
+    // description: inputDescription.value,
+    description: "",
+    brand: bookSelected[0].category, //------->>>>> category for my book Store
+    imageUrl: bookSelected[0].img,
+    // price: inputPrice.value,
+    price: "",
+    //   ? inputPrice.value
+    //   : parseInt(inputPrice.placeholder),
+  };
+  //   buttonAddToStore.addEventListener(onclick, () => sendDataServer(newBookStore));
+  console.log(newBookStore);
 };
 
 const getBooksfromApi = () => {
@@ -118,6 +145,55 @@ const getBooksfromApi = () => {
       choiceList.innerHTML = "";
       choiceList.innerHTML = listOptions;
     });
+};
+
+const showAlertForm = (string, objectNewBook) => {
+  let keysBook = Object.keys(objectNewBook);
+  selectedKey = keysBook.filter((key) => key === string);
+  alert(`We sorry seems ${selectedKey[0]} is not set up`);
+  //console.log("Create a Nice Modal"); // Template for modal is in backoffice.html ready to setup
+};
+
+const checkPriceAndDescription = async () => {
+  try {
+    newBookStore.description = await inputDescription.value;
+    newBookStore.price = await inputPrice.value;
+    if (newBookStore.description && newBookStore.price) {
+      console.log("Send Data");
+      //Send Data
+      fetch(urlPostMethod, {
+        method: "POST",
+        body: JSON.stringify(newBookStore),
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDUxZThjMTg5YzI2ZjAwMTU3ZjljMjgiLCJpYXQiOjE2MTU5ODA3MzgsImV4cCI6MTYxNzE5MDMzOH0.7ecaHsVow0aLX_UvZMM5X65HUmrVhWqs445ZEX-G258",
+          "Content-Type": "application/json",
+        },
+      }).then((response) => {
+        if (response.ok) {
+          alert("Book Added To Store");
+        }
+      });
+    } else {
+      newBookStore.description
+        ? newBookStore.description
+        : showAlertForm("description", newBookStore);
+      newBookStore.price
+        ? newBookStore.price
+        : showAlertForm("price", newBookStore);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const sendDataServer = (e) => {
+  e.preventDefault();
+  console.log("default Prevented");
+  if (newBookStore) {
+    console.log(newBookStore);
+    checkPriceAndDescription();
+  }
 };
 
 window.onload = () => {

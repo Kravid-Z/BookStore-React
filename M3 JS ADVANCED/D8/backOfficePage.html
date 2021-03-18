@@ -88,7 +88,7 @@
         <div class="row">
           <div class="col col-md-6">
             <h2>Create product in store</h2>
-            <form onsubmit="handleSubmit(event)">
+            <form onsubmit="sendDataServer(event)">
               <div class="form-group">
                 <label for="bookSelected"
                   >Select a book to add at the store</label
@@ -102,7 +102,7 @@
                 </select>
               </div>
               <div class="form-group">
-                <span class="asin-book"><!--ASIN to check--></span>
+                <span id="asinBook"><!--ASIN to check--></span>
               </div>
               <div class="form-group">
                 <label for="description">Book description</label>
@@ -117,31 +117,65 @@
                 <label for="price">Book price</label>
                 <input
                   id="price"
-                  type="number"
+                  type="text"
                   class="form-control"
                   placeholder="Write the Book price here"
                 />
                 <small class="text-muted"
-                  ><sup>*</sup> If you don't change the price, will take the
-                  suggested price.</small
+                  ><sup>*</sup> Please even if you will not change the suggested
+                  price, you should confirm it by typing using the same format
+                  suggested.</small
                 >
               </div>
               <div class="form-group">
-                <button class="btn btn-primary" type="submit">
+                <button id="addToStore" class="btn btn-primary" type="submit">
                   Add to Store
                 </button>
               </div>
             </form>
           </div>
           <div class="col col-md-5 text-center">
-              <h2>Product Preview</h2>
-              <div id="bookPreview" class="container">
-                  
-              </div>
+            <h2>Product Preview</h2>
+            <div id="bookPreview" class="container"></div>
             <!--Here will inject a preview of the card Book to Add at the STORE-->
           </div>
         </div>
       </div>
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">...</div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close & Edit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Modal -->
     </main>
     <!--Here Starts footer-->
     <footer></footer>
