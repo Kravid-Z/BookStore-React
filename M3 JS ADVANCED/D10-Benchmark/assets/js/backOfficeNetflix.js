@@ -34,6 +34,8 @@ Ex:
 
 // const categorysNetflix = [{categoryName: "Docuseries", id_category:"0a"},{categoryName: "ComedyProgrammes", id_category:"1b"},{categoryName: "SciFi", id_category:"2c"},{categoryName: "ActionAdventure", id_category:"3d"}];
 let categoKeySelected;
+let newMovieInStrive;
+const dataBaseStoreUrl = "https://striveschool-api.herokuapp.com/api/movies/";
 // ------------------------------------------------------> ELEMENTS IN DOM
 const categorySelected = document.querySelector("#categorySelected");
 const titleSelected = document.querySelector("#titleSelected");
@@ -96,7 +98,9 @@ const renderMovieCardPreview = (value) => {
   let titleToKey = categoKeySelected.filter(
     (movieObject) => movieObject.name === value
   );
+
   console.log(titleToKey);
+  console.log(titleToKey[0].name);
   // movieSelected = books.filter((book) => book.asin === value);
   // console.log(movieSelected);
   // inputPrice.setAttribute("placeholder", `${bookSelected[0].price}`);
@@ -133,17 +137,75 @@ const renderMovieCardPreview = (value) => {
   moviePreviewCol.innerHTML = renderMoviePreview;
 
   newMovieInStrive = {
-    //   name: bookSelected[0].title,
-    //   // description: inputDescription.value,
-    //   description: "",
-    //   brand: bookSelected[0].category, //------->>>>> category for my book Store
-    //   imageUrl: bookSelected[0].img,
-    //   // price: inputPrice.value,
-    //   price: "",
-    //   //   ? inputPrice.value
-    //   : parseInt(inputPrice.placeholder),
+    name: `${titleToKey[0].name}`, //document.querySelector("#movie-title-test").value, //titleToKey[0].name,
+    description: "",
+    category: titleToKey[0].category,
+    imageUrl: titleToKey[0].imageUrl,
   };
-//   console.log(newMovieInStrive);
+  //   console.log(newMovieInStrive);
+};
+
+// ------------------------------------------------------>  FUNCTION SEND DATA Movie
+
+const showAlertForm = (string, objectNewBook) => {
+  let keysBook = Object.keys(objectNewBook);
+  selectedKey = keysBook.filter((key) => key === string);
+  alert(`We sorry seems ${selectedKey[0]} is not set up`);
+  //console.log("Create a Nice Modal"); // Template for modal is in backoffice.html ready to setup
+};
+
+const checkDescription = async () => {
+  try {
+    newMovieInStrive.description = await inputDescription.value;
+    console.log(newMovieInStrive.description);
+    if (newMovieInStrive.description) {
+      console.log("Send Data");
+      //Send Data
+      fetch(dataBaseStoreUrl, {
+        method: "POST",
+        body: JSON.stringify(newMovieInStrive),
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDUxZThjMTg5YzI2ZjAwMTU3ZjljMjgiLCJpYXQiOjE2MTU5ODA3MzgsImV4cCI6MTYxNzE5MDMzOH0.7ecaHsVow0aLX_UvZMM5X65HUmrVhWqs445ZEX-G258",
+          "Content-Type": "application/json",
+        },
+      }).then((response) => {
+        if (response.ok) {
+          alert("Movie Added To Netflix");
+        }
+      });
+    } else {
+      newMovieInStrive.description
+        ? newMovieInStrive.description
+        : showAlertForm("description", newMovieInStrive);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const sendDataServer = (e) => {
+  e.preventDefault();
+  console.log("default Prevented");
+  if (newMovieInStrive) {
+    console.log(newMovieInStrive);
+    checkDescription();
+  } else {
+    alert("Sorry nothing to add at NetflixMOvie");
+  }
+};
+
+const fetchdata = () => {
+  fetch(dataBaseStoreUrl, {
+    method: "GET",
+    headers: {
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDUxZThjMTg5YzI2ZjAwMTU3ZjljMjgiLCJpYXQiOjE2MTU5ODA3MzgsImV4cCI6MTYxNzE5MDMzOH0.7ecaHsVow0aLX_UvZMM5X65HUmrVhWqs445ZEX-G258",
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then(console.log);
 };
 
 /**
