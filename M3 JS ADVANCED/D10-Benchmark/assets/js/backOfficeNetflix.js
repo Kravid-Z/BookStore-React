@@ -35,6 +35,7 @@ Ex:
 // const categorysNetflix = [{categoryName: "Docuseries", id_category:"0a"},{categoryName: "ComedyProgrammes", id_category:"1b"},{categoryName: "SciFi", id_category:"2c"},{categoryName: "ActionAdventure", id_category:"3d"}];
 let categoKeySelected;
 let newMovieInStrive;
+let categorysStriveServer= [];
 const dataBaseStoreUrl = "https://striveschool-api.herokuapp.com/api/movies/";
 // ------------------------------------------------------> ELEMENTS IN DOM
 const categorySelected = document.querySelector("#categorySelected");
@@ -137,7 +138,7 @@ const renderMovieCardPreview = (value) => {
   moviePreviewCol.innerHTML = renderMoviePreview;
 
   newMovieInStrive = {
-    name: `${titleToKey[0].name}`, //document.querySelector("#movie-title-test").value, //titleToKey[0].name,
+    name: `${titleToKey[0].name}/FS21Feb`, //document.querySelector("#movie-title-test").value, //titleToKey[0].name,
     description: "",
     category: titleToKey[0].category,
     imageUrl: titleToKey[0].imageUrl,
@@ -195,7 +196,10 @@ const sendDataServer = (e) => {
   }
 };
 
-const fetchdata = () => {
+
+// ------------------------------------------------------>  FUNCTION GET DATA Movie TO LIST AVAILABLES
+
+const fetchdataCategorysStored = () => {
   fetch(dataBaseStoreUrl, {
     method: "GET",
     headers: {
@@ -205,8 +209,26 @@ const fetchdata = () => {
     },
   })
     .then((response) => response.json())
-    .then(console.log);
+    .then(categorysStriveS => {
+        categorysStriveS.map(category=>{
+            fetch(dataBaseStoreUrl+category,{
+                method: "GET",
+                headers: {
+                  Authorization:
+                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDUxZThjMTg5YzI2ZjAwMTU3ZjljMjgiLCJpYXQiOjE2MTU5ODA3MzgsImV4cCI6MTYxNzE5MDMzOH0.7ecaHsVow0aLX_UvZMM5X65HUmrVhWqs445ZEX-G258",
+                  "Content-Type": "application/json",
+                },
+              }).then(response => response.json()).then(data => {
+                categorysStriveServer.push(data)
+                console.log(categorysStriveServer);
+              })
+        })
+
+
+        // categorysStriveServer.forEach()
+    });
 };
+
 
 /**
 let books; // array with books from booksUrlMotherDataBAse
