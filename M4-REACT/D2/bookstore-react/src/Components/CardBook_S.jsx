@@ -1,27 +1,29 @@
 import React from "react";
 import { Card, Col, Container, Row, Form, Button } from "react-bootstrap";
+import Books from "../Data/fantasy.json";
 
 const CardBook_S = (props) => (
   <Card>
-    <Row className="no-gutters">
-      <Col xs={12} md={4}>
-      <Card.Img className="img-fluid" src="holder.js/100px160" />
-      </Col>
-      <Col xs={12} md={8}>
-        <Card.Body>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
-          </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
-      </Col>
-    </Row>
+    {Books.map((book) => (
+      <Row key="book.asin" className="no-gutters">
+        <Col xs={12} md={4}>
+          <Card.Img className="img-fluid" src={book.img} />
+        </Col>
+        <Col xs={12} md={8}>
+          <Card.Body>
+            <Card.Title>{book.title}</Card.Title>
+            <Card.Text>This is a short description.</Card.Text>
+          </Card.Body>
+          <Card.Footer>
+            <small className="text-muted">{book.category}</small>
+          </Card.Footer>
+        </Col>
+      </Row>
+    ))}
   </Card>
 );
+
+export default CardBook_S;
 
 /**`<div id="${curr.asin}" class="card mb-3" style="max-width: 380px; max-height: 200px;">
         <div class="row no-gutters">
