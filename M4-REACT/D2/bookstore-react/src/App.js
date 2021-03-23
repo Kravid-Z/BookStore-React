@@ -1,11 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css'
-import NavigationBarB_S from './Components/NavigationBarB_S'
+import logo from "./logo.svg";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import NavigationBarB_S from "./Components/NavigationBarB_S";
+import HeroSection from "./Components/HeroSection";
+import FooterB_S from "./Components/FooterB_S";
 
 function App() {
   return (
-    <NavigationBarB_S title="React Book Store" />
+    <div>
+      <NavigationBarB_S title="React Book Store" />
+      <HeroSection
+        titleHero="Welcome this amazing React bookstore"
+        descriptionHero="Where books are burned, in the end people will be burned."
+        autor="Heinrich Heine"
+      />
+      <FooterB_S />
+    </div>
   );
 }
 
