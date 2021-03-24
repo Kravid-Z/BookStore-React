@@ -1,26 +1,24 @@
 import React from "react";
 import { Card, Col, Container, Row, Form, Button } from "react-bootstrap";
-import Books from "../Data/fantasy.json";
 
 const CardBook_S = (props) => (
-  <Card>
-    {Books.map((book) => (
-      <Row key="book.asin" className="no-gutters">
+  <>
+    <Card>
+      <Row key={props.asin} className="no-gutters">
         <Col xs={12} md={4}>
-          <Card.Img className="img-fluid" src={book.img} />
+          <Card.Img className="img-fluid" src={props.img} />
         </Col>
         <Col xs={12} md={8}>
           <Card.Body>
-            <Card.Title>{book.title}</Card.Title>
-            <Card.Text>This is a short description.</Card.Text>
+            <Card.Title>{props.title}</Card.Title>
           </Card.Body>
           <Card.Footer>
-            <small className="text-muted">{book.category}</small>
+            <small className="text-muted">{props.category}</small>
           </Card.Footer>
         </Col>
       </Row>
-    ))}
-  </Card>
+    </Card>
+  </>
 );
 
 export default CardBook_S;

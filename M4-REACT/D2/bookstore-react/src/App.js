@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import NavigationBarB_S from "./Components/NavigationBarB_S";
 import HeroSection from "./Components/HeroSection";
 import FooterB_S from "./Components/FooterB_S";
-import MainsSectionB_S from "./Components/MainsSectionB_S";
+import MainsSectionB_S from "./Components/MainSectionB_S";
 
 function App() {
   return (
