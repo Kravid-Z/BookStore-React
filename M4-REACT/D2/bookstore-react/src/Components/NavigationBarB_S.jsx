@@ -15,6 +15,8 @@ const NavigationBarB_S = (props) => (
       <Form inline>
         <FormControl
           type="text"
+          value={props.search}
+          onChange={(e) => props.setState(e)}
           placeholder="Search your Book"
           className="mr-sm-2"
         />
