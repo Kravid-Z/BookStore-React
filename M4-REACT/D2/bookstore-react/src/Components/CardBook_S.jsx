@@ -1,9 +1,10 @@
 import React from "react";
 import { Card, Col, Container, Row, Form, Button } from "react-bootstrap";
+import MyBadge from "./MyBadge";
 
 const CardBook_S = (props) => (
   <>
-    <Card>
+    <Card className="my-2">
       <Row key={props.asin} className="no-gutters">
         <Col xs={12} md={4}>
           <Card.Img className="img-fluid" src={props.img} />
@@ -11,6 +12,9 @@ const CardBook_S = (props) => (
         <Col xs={12} md={8}>
           <Card.Body>
             <Card.Title>{props.title}</Card.Title>
+            <p>
+              <MyBadge textBadge="New" colorBadge="info" colorBtn="secondary" />
+            </p>
           </Card.Body>
           <Card.Footer>
             <small className="text-muted">{props.category}</small>

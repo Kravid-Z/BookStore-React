@@ -2,7 +2,7 @@ import { Button, Badge } from "react-bootstrap";
 
 const MyBadge = (props) => (
   <Button variant={props.colorBtn}>
-    Profile <Badge variant={props.colorBadge}>{props.textBadge}</Badge>
+    Buy <Badge variant={props.colorBadge}>{props.textBadge}</Badge>
     <span className="sr-only">unread messages</span>
   </Button>
 );
