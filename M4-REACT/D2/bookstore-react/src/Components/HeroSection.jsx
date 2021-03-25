@@ -1,6 +1,15 @@
 import { Jumbotron, Container } from "react-bootstrap";
 const HeroSection = (props) => (
-  <Jumbotron fluid style={{ backgroundImage: "url(./book.jpg)" }}>
+  <Jumbotron
+    fluid
+    className="text-white"
+    style={{
+      backgroundImage: "url(./book.jpg)",
+      bacgkroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+      backgroundSize: "cover",
+    }}
+  >
     <Container>
       <h1>{props.titleHero}</h1>
       <p>{props.descriptionHero}</p>

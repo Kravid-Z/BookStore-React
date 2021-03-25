@@ -7,18 +7,16 @@ class BookList extends React.Component {
 
   render() {
     return (
-      <Row>
-          
-        <Col xs={{ span: 6, offset: 3 }}>
-          {this.props.Books.map((book) => (
+      <Row className="justify-content-center">
+        {this.props.Books.map((book) => (
+          <Col xs={10} md={3} key={book.asin}>
             <CardBook_S
-              key={book.asin}
               img={book.img}
               title={book.title}
               category={book.category}
             />
-          ))}
-        </Col>
+          </Col>
+        ))}
       </Row>
     );
   }
