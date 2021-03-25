@@ -1,19 +1,24 @@
 import React from "react";
-import { Card, Col, Container, Row, Form, Button } from "react-bootstrap";
+import { Card, Col, Row} from "react-bootstrap";
 import MyBadge from "./MyBadge";
 
 const CardBook_S = (props) => (
   <>
     <Card className="my-2">
-      <Row key={props.asin} className="no-gutters">
+      <Row className="no-gutters">
         <Col xs={12} md={4}>
           <Card.Img className="img-fluid" src={props.img} />
         </Col>
         <Col xs={12} md={8}>
           <Card.Body>
-            <Card.Title>{props.title}</Card.Title>
+            <Card.Title className="h6 text-truncate">{props.title}</Card.Title>
             <p>
-              <MyBadge textBadge="New" colorBadge="info" colorBtn="secondary" />
+              <MyBadge
+                asin={props.asin}
+                textBadge="New"
+                colorBadge="info"
+                colorBtn="secondary"
+              />
             </p>
           </Card.Body>
           <Card.Footer>

@@ -1,11 +1,23 @@
+import React from "react";
 import { Button, Badge } from "react-bootstrap";
+import CommentArea from "./ComentArea";
 
-const MyBadge = (props) => (
-  <Button variant={props.colorBtn}>
-    Buy <Badge variant={props.colorBadge}>{props.textBadge}</Badge>
-    <span className="sr-only">unread messages</span>
-  </Button>
-);
+const MyBadge = (props) => {
+  const [modalShow, setModalShow] = React.useState(false);
+  return (
+    <>
+      <Button
+        id={props.asin}
+        variant={props.colorBtn}
+        onClick={() => setModalShow(true)}
+      >
+        Previews <Badge variant={props.colorBadge}>{props.textBadge}</Badge>
+        <span className="sr-only">unread messages</span>
+      </Button>
+      <CommentArea show={modalShow} onHide={() => setModalShow(false)} />
+    </>
+  );
+};
 
 export default MyBadge;
 

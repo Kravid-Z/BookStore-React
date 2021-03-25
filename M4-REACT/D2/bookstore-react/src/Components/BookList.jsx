@@ -1,4 +1,4 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import CardBook_S from "./CardBook_S.jsx";
 import React from "react";
 
@@ -9,11 +9,12 @@ class BookList extends React.Component {
     return (
       <Row className="justify-content-center">
         {this.props.Books.map((book) => (
-          <Col xs={10} md={3} key={book.asin}>
+          <Col xs={10} md={4} key={book.asin}>
             <CardBook_S
               img={book.img}
               title={book.title}
               category={book.category}
+              asin={book.asin}
             />
           </Col>
         ))}
