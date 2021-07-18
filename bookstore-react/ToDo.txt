@@ -1,0 +1,14 @@
+* Slider BestSellers
+* Pagination
+* Recommended Books section sidebar
+* Select categorys
+* Details
+* Search
+* Add To Car
+
+
+
+const numberP = Books.length / 30 
+
+
+Books.slice(0, numberP)

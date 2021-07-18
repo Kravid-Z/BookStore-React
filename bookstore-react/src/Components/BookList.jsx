@@ -3,9 +3,11 @@ import CardBook_S from "./CardBook_S.jsx";
 import React from "react";
 
 class BookList extends React.Component {
-  state = {};
-
+  state = {
+  };
+  
   render() {
+    console.log(this.props.Books.slice(0,30))
     return (
       <Row className="justify-content-center">
         {this.props.Books.map((book) => (
